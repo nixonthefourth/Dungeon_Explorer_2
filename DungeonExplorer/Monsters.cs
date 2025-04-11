@@ -1,6 +1,6 @@
 namespace DungeonExplorer
 {
-    public class Monsters
+    public class Monsters : Creature
     {
         
     }
