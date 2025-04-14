@@ -4,7 +4,9 @@ namespace DungeonExplorer
     {
         public string CreatureName;
         public int CreatureDamage;
-        public float CreatureLuck;
+        public int CreatureLuck;
         public int CreatureHealth;
+
+        public abstract string GetCreatureName();
     }
 }

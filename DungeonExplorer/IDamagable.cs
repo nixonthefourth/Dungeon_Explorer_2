@@ -8,13 +8,21 @@ namespace DungeonExplorer
             if (GenerateRandom() <= 7)
             {
                 creatureReceives.CreatureHealth -= creatureDamages.CreatureDamage;
-                Console.WriteLine("Damage Dealt");
+                DisplayMessage($"{creatureReceives} has been injured!\n \n" +
+                               $"Health of {creatureReceives}: {creatureReceives.CreatureHealth}\n" +
+                               $"Health of {creatureDamages}: {creatureDamages.CreatureDamage}");
             }
             
             // Case, where creature doesn't deal damage
             else if (GenerateRandom() >= 8)
             {
-                Console.WriteLine("Damage Wasn't Dealt");
+                DisplayMessage("Hit was missed!");
+            }
+            
+            // Case of death
+            if (creatureReceives.CreatureHealth is 0)
+            {
+                DisplayMessage($"{creatureReceives} is dead!");
             }
         }
     }
