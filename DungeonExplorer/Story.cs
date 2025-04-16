@@ -12,21 +12,6 @@ namespace DungeonExplorer
             
             Console.Clear();
         }
-        
-        /// <summary>
-        /// Displays a welcome message.
-        /// </summary>
-        ///
-        /// <remarks>
-        /// Input line is read and the the screen is cleared later.
-        /// ConfirmationMessage() is applied.
-        /// </remarks>
-        public void Welcome()
-        {
-            IHelper.DisplayMessage("Welcome to Dungeon Explorer!");
-            
-            ConfirmationMessage();
-        }
 
         /// <summary>
         /// Shows start of the story.
@@ -38,6 +23,10 @@ namespace DungeonExplorer
         /// </remarks>
         public void StoryStart()
         {
+            IHelper.DisplayMessage("Welcome to Dungeon Explorer!");
+            
+            ConfirmationMessage();
+            
             IHelper.DisplayMessage("***\n" +
                                    "Long time ago...\n" +
                                    "In a far-far galaxy...\n" +
@@ -109,7 +98,14 @@ namespace DungeonExplorer
         /// </summary>
         public void WinAdventure()
         {
-            IHelper.DisplayMessage("You completed the adventure!");
+            IHelper.DisplayMessage("You have completed the adventure!");
+        }
+
+        public void FightMessage()
+        {
+            IHelper.DisplayMessage("You have entered the fight!");
+            
+            ConfirmationMessage();
         }
     }
 }

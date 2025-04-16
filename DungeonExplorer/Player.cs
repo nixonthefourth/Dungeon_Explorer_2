@@ -23,10 +23,10 @@ namespace DungeonExplorer
         /// </param>
         public Player(string playerName, int playerDamage, int playerLuck, int playerHealth) : base()
         {
-            playerName = CreatureName;
-            playerDamage = CreatureDamage;
-            playerLuck = CreatureLuck;
-            playerHealth = CreatureHealth;
+            CreatureName = playerName;
+            CreatureDamage = playerDamage;
+            CreatureLuck = playerLuck;
+            CreatureHealth = playerHealth;
         }
 
         /// <summary>
