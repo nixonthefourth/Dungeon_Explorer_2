@@ -10,21 +10,16 @@ namespace DungeonExplorer
         /// </summary>
         public static void Run()
         {
-            // Initialising new story line
-            Story story = new Story();
-            
             // Initialising new player in the game
             Player player = new Player(null, 10, 1, 100);
             
             // Runtime
             // Starting story
-            story.StoryStart();
+            Story.StoryStart();
             player.GetCreatureName();
-        }
-
-        private static void FightSystem(Creature creatureDamages, Creature creatureReceives)
-        {
             
+            // Testing Room
+            Rooms room1 = new Rooms();
         }
     }
 }

@@ -5,7 +5,7 @@ namespace DungeonExplorer
         /// <summary>
         /// Confirmation sequence (Press enter to continue.)
         /// </summary>
-        private void ConfirmationMessage()
+        public static void ConfirmationMessage()
         {
             IHelper.DisplayMessage("\n\nPress Enter to continue...");
             Console.ReadLine();
@@ -21,7 +21,7 @@ namespace DungeonExplorer
         /// Input line is read and the the screen is cleared later.
         /// ConfirmationMessage() is applied.
         /// </remarks>
-        public void StoryStart()
+        public static void StoryStart()
         {
             IHelper.DisplayMessage("Welcome to Dungeon Explorer!");
             
@@ -49,7 +49,7 @@ namespace DungeonExplorer
         /// Input line is read and the the screen is cleared later.
         /// ConfirmationMessage() is applied.
         /// </remarks>
-        public void CharacterNameConfirmation(string characterName)
+        public static void CharacterNameConfirmation(string characterName)
         {
             IHelper.DisplayMessage($"Welcome, {characterName}!");
             
@@ -59,7 +59,7 @@ namespace DungeonExplorer
         /// <summary>
         /// Shows the description of the room with randomly selected values
         /// </summary>
-        public void GetRoomDescription()
+        public static void GetRoomDescription()
         {
             Console.Clear();
             
@@ -82,7 +82,7 @@ namespace DungeonExplorer
         /// <summary>
         /// If user loses the adventure.
         /// </summary>
-        public void LoseAdventure()
+        public static void LoseAdventure()
         {
             Console.Clear();
             
@@ -96,12 +96,12 @@ namespace DungeonExplorer
         /// <summary>
         /// User wins the adventure.
         /// </summary>
-        public void WinAdventure()
+        public static void WinAdventure()
         {
             IHelper.DisplayMessage("You have completed the adventure!");
         }
 
-        public void FightMessage()
+        public static void FightMessage()
         {
             IHelper.DisplayMessage("You have entered the fight!");
             
