@@ -9,15 +9,15 @@ namespace DungeonExplorer
             {
                 creatureReceives.CreatureHealth -= creatureDamages.CreatureDamage;
                 
-                DisplayMessage($"{creatureReceives} has been injured!\n \n" +
-                               $"Health of {creatureReceives}: {creatureReceives.CreatureHealth}\n" +
-                               $"Health of {creatureDamages}: {creatureDamages.CreatureDamage}");
+                DisplayMessage($"\n{creatureReceives.CreatureName} has been injured!\n \n" +
+                               $"Health of {creatureReceives.CreatureName}: {creatureReceives.CreatureHealth}\n" +
+                               $"Health of {creatureDamages.CreatureName}: {creatureDamages.CreatureDamage}");
             }
             
             // Case, where creature doesn't deal damage
             else if (GenerateRandom() >= 8)
             {
-                DisplayMessage($"{creatureDamages}'s hit was missed!");
+                DisplayMessage($"\n{creatureDamages.CreatureName}'s hit was missed!");
             }
         }
     }
