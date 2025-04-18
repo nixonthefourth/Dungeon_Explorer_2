@@ -201,8 +201,8 @@ namespace DungeonExplorer
                 
                 if (_playerRunFlag is false)
                 {
-                    // Enemy damages, if this case mathematically is less or equal to 7
-                    if (IHelper.GenerateRandom() + monster.CreatureLuck <= 7)
+                    // Enemy damages, if this case mathematically is less or equal to 8
+                    if (IHelper.GenerateRandom() + monster.CreatureLuck <= 8)
                     {
                         // Checking the shield mechanic
                         if (_playerShieldFlag)
