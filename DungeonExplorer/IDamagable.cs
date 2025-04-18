@@ -4,20 +4,20 @@ namespace DungeonExplorer
     {
         public static void Damage(Creature creatureDamages, Creature creatureReceives)
         {
-            // Case, where creature deals damage
+            // Case, where the creature deals damage
             if (GenerateRandom() <= 7)
             {
                 creatureReceives.CreatureHealth -= creatureDamages.CreatureDamage;
                 
-                DisplayMessage($"\n{creatureReceives.CreatureName} has been injured!\n \n" +
+                DisplayMessage($"\n{creatureReceives.CreatureName} has been injured!\n" +
                                $"Health of {creatureReceives.CreatureName}: {creatureReceives.CreatureHealth}\n" +
-                               $"Health of {creatureDamages.CreatureName}: {creatureDamages.CreatureDamage}");
+                               $"Health of {creatureDamages.CreatureName}: {creatureDamages.CreatureHealth}\n");
             }
             
-            // Case, where creature doesn't deal damage
+            // Case, where the creature doesn't deal damage
             else if (GenerateRandom() >= 8)
             {
-                DisplayMessage($"\n{creatureDamages.CreatureName}'s hit was missed!");
+                DisplayMessage($"\n{creatureDamages.CreatureName}'s hit was missed!\n");
             }
         }
     }

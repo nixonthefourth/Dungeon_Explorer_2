@@ -20,7 +20,7 @@ namespace DungeonExplorer
         public static sealed int GenerateRandom()
         {
             // Sets a random seed
-            int rand = Rand.Next(0, 10);
+            int rand = Rand.Next(1, 10);
             
             // Returns that random number.
             return rand;

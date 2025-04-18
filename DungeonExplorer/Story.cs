@@ -7,7 +7,7 @@ namespace DungeonExplorer
         /// </summary>
         public static void ConfirmationMessage()
         {
-            IHelper.DisplayMessage("\n\nPress Enter to continue...");
+            IHelper.DisplayMessage("\nPress Enter to continue...");
             Console.ReadLine();
             
             Console.Clear();
@@ -23,16 +23,16 @@ namespace DungeonExplorer
         /// </remarks>
         public static void StoryStart()
         {
-            IHelper.DisplayMessage("Welcome to Dungeon Explorer!");
+            IHelper.DisplayMessage("\nWelcome to Dungeon Explorer!\n");
             
             ConfirmationMessage();
             
-            IHelper.DisplayMessage("***\n" +
+            IHelper.DisplayMessage("\n***\n" +
                                    "Long time ago...\n" +
                                    "In a far-far galaxy...\n" +
                                    "Monsters out of Biggleswade were born.\n \n" +
                                    "It's time for a hero to diabolically demolish them!\n" +
-                                   "***");
+                                   "***\n");
             
             ConfirmationMessage();
         }
@@ -41,7 +41,7 @@ namespace DungeonExplorer
         /// Output Character's Name (Name Confirmation Pretty Much)
         /// </summary>
         /// 
-        /// <param name="characterName">
+        /// <param name="creature">
         /// Pushes the name of the character that player defines.
         /// </param>
         ///
@@ -49,9 +49,9 @@ namespace DungeonExplorer
         /// Input line is read and the the screen is cleared later.
         /// ConfirmationMessage() is applied.
         /// </remarks>
-        public static void CharacterNameConfirmation(string characterName)
+        public static void CharacterNameConfirmation(Creature creature)
         {
-            IHelper.DisplayMessage($"Welcome, {characterName}!");
+            IHelper.DisplayMessage($"\nWelcome, {creature.CreatureName}!\n");
             
             ConfirmationMessage();
         }
@@ -63,7 +63,7 @@ namespace DungeonExplorer
         {
             Console.Clear();
             
-            IHelper.DisplayMessage("Would you like to get room description? Y/N ");
+            IHelper.DisplayMessage("\nWould you like to get room description? Y/N ");
 
             while (true)
             {
@@ -71,11 +71,11 @@ namespace DungeonExplorer
             
                 if (userResponse is "y")
                 {
-                    IHelper.DisplayMessage("I would rather not go back to the old house.");
+                    IHelper.DisplayMessage("\nI would rather not go back to the old house.");
                     break;
                 }
                 else if (userResponse is "n") break;
-                else IHelper.DisplayMessage("Invalid response. Please try again: ");
+                else IHelper.DisplayMessage("\nInvalid response. Please try again: ");
             }
         }
         

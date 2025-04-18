@@ -1,5 +1,3 @@
-using System.IO.MemoryMappedFiles;
-
 namespace DungeonExplorer
 
 {
@@ -10,14 +8,14 @@ namespace DungeonExplorer
         /// </summary>
         public static void Run()
         {
-            // Initialising new player in the game
+            // Initialising the new player in the game
             Player player = new Player(null, 10, 1, 100);
             
             // Runtime
             // Starting story
             Story.StoryStart();
             player.GetCreatureName();
-            Story.ConfirmationMessage();
+            Story.CharacterNameConfirmation(player);
             
             // Testing Room
             Rooms room1 = new Rooms();

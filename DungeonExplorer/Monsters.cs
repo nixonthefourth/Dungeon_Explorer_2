@@ -43,11 +43,11 @@ namespace DungeonExplorer
             {
                 new Monsters("Pride", 20, 1, 100),
                 new Monsters("Greed", 25, 2, 80),
-                new Monsters("Wrath", 15, 3, 100),
-                new Monsters("Envy", 18, 3, 70),
-                new Monsters("Lust", 30, 4, 90),
-                new Monsters("Gluttony", 15, 5, 140),
-                new Monsters("Sloth", 40, 6, 90)
+                new Monsters("Wrath", 15, 2, 100),
+                new Monsters("Envy", 18, 2, 70),
+                new Monsters("Lust", 30, 2, 90),
+                new Monsters("Gluttony", 15, 3, 140),
+                new Monsters("Sloth", 40, 3, 90)
             };
             
             // Return of the list and random selection of numbers for the objects.
