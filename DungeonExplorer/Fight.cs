@@ -1,6 +1,6 @@
 namespace DungeonExplorer
 {
-    public class Fight : IHelper
+    public class Fight : IHelper, IHealable
     {
         private static bool _playerShieldFlag = false;
         private static bool _playerRunFlag = false;
@@ -31,7 +31,7 @@ namespace DungeonExplorer
                 Story.ConfirmationMessage();
                 
                 // The fighting system itself
-                while (true || _playerRunFlag is false)
+                while (true)
                 {
                     // Checks the monster's health
                     if (roomMonster.CreatureHealth <= 0)
@@ -52,6 +52,12 @@ namespace DungeonExplorer
                     {
                         // Player's turn
                         PlayerTurn(player, roomMonster);
+
+                        // Checking whether run is possible, in case player triggers it
+                        if (_playerRunFlag)
+                        {
+                            break;
+                        }
                         
                         // Monster's turn
                         MonsterTurn(roomMonster, player);
@@ -87,7 +93,7 @@ namespace DungeonExplorer
             // Selection menu for the player's actions
             IHelper.DisplayMessage("\n1 | Damage\n" +
                                    "2 | Shield\n" +
-                                   "3 | Attempt to run\n");
+                                   "3 | Attempt to run\n \n");
             
             // Selection loop
             while (true)
@@ -202,7 +208,7 @@ namespace DungeonExplorer
                 if (_playerRunFlag is false)
                 {
                     // Enemy damages, if this case mathematically is less or equal to 8
-                    if (IHelper.GenerateRandom() + monster.CreatureLuck <= 8)
+                    if (IHelper.GenerateRandom() - monster.CreatureLuck <= 7)
                     {
                         // Checking the shield mechanic
                         if (_playerShieldFlag)
@@ -212,7 +218,9 @@ namespace DungeonExplorer
                             IDamagable.Damage(monster, target);
                             
                             // Returning creature's damage, so it doesn't change permanently
+                            // Changing value of a flag as well, which brings stats back to normal
                             monster.CreatureDamage += 10;
+                            _playerRunFlag = false;
                         }
                         
                         // If shielding was unsuccessful
@@ -220,6 +228,17 @@ namespace DungeonExplorer
                         {
                             // Dealing regular damage
                             IDamagable.Damage(monster, target);
+                        }
+                    }
+                    
+                    // Enemy heals from the attack
+                    if (IHelper.GenerateRandom() - monster.CreatureLuck >= 8)
+                    {
+                        // Checks the liability of this case
+                        if (monster.CreatureHealth <= 60)
+                        {
+                            // Activating the healing sequence
+                            IHealable.HealCreature(monster, 5);
                         }
                     }
                 }

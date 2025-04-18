@@ -46,7 +46,7 @@ namespace DungeonExplorer
             while (true)
             {
                 // Name input
-                IHelper.DisplayMessage("Enter your name, mighty warrior: ");
+                IHelper.DisplayMessage("\nEnter your name, mighty warrior: ");
                 CreatureName = Console.ReadLine();
                 
                 // Input validation
