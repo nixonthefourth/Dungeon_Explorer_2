@@ -54,10 +54,7 @@ namespace DungeonExplorer
                         PlayerTurn(player, roomMonster);
 
                         // Checking whether run is possible, in case player triggers it
-                        if (_playerRunFlag)
-                        {
-                            break;
-                        }
+                        if (_playerRunFlag) break;
                         
                         // Monster's turn
                         MonsterTurn(roomMonster, player);
@@ -151,6 +148,9 @@ namespace DungeonExplorer
 
                             // Make sure the enemy is dead, and the new enemy can be generated later.
                             target.CreatureHealth = 0;
+                            
+                            // Return the flag
+                            _playerRunFlag = false;
 
                             break;
                         }
