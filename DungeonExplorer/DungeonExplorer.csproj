@@ -35,7 +35,7 @@
       <Compile Update="Classes\Program.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
-      <Compile Update="Classes\Rooms.cs">
+      <Compile Update="Classes\Room.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
       <Compile Update="Classes\Story.cs">

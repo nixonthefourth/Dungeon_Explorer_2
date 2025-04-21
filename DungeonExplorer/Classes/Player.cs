@@ -38,10 +38,10 @@ namespace DungeonExplorer
         /// </returns>
         ///
         /// <remarks>
-        /// Puts the game into the infinite loop, until the input is valid.
-        /// Input is checked on the length, and whether the string is an empty character or a space.
+        /// Puts the game into the infinite loop until the input is valid.
+        /// Input is checked on the length and whether the string is an empty character or a space.
         /// </remarks>
-        public override string GetCreatureName()
+        public string GetCreatureName()
         {
             while (true)
             {
@@ -55,7 +55,7 @@ namespace DungeonExplorer
                     IHelper.DisplayMessage("Invalid name.\n");
                 } 
                 
-                // Successfull case
+                // Successful case
                 else break;
             }
             

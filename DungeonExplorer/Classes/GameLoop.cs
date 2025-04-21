@@ -18,7 +18,7 @@ namespace DungeonExplorer
             Story.CharacterNameConfirmation(player);
             
             // Testing Room
-            Rooms room1 = new Rooms();
+            Room room1 = new Room();
             Fight.FightEncounter(player, room1);
         }
     }

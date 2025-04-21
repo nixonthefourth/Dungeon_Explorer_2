@@ -53,14 +53,5 @@ namespace DungeonExplorer
             // Return of the list and random selection of numbers for the objects.
             return monsters[new Random().Next(monsters.Count)];
         }
-        
-        /// <summary>
-        /// Not sure what to do with this method yet...
-        /// </summary>
-        /// <returns></returns>
-        public override string GetCreatureName()
-        {
-            return null;
-        }
     }
 }
