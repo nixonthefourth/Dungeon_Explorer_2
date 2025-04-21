@@ -4,7 +4,7 @@ namespace DungeonExplorer
     public class GameLoop
     {
         /// <summary>
-        /// Running sequence, which will be passed later into entry point of the program.
+        /// Running sequence, which will be passed later into the entry point of the program.
         /// </summary>
         public static void Run()
         {
@@ -17,7 +17,7 @@ namespace DungeonExplorer
             player.GetCreatureName();
             Story.CharacterNameConfirmation(player);
             
-            // Testing Room
+            // Testing Sequence
             Room room1 = new Room();
             Fight.FightEncounter(player, room1);
         }

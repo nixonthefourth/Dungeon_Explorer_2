@@ -17,28 +17,28 @@
       <Compile Update="Interfaces\IHelper.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
-      <Compile Update="Classes\Creature.cs">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Compile>
       <Compile Update="Classes\Fight.cs">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Compile>
-      <Compile Update="Classes\GameLoop.cs">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Compile>
-      <Compile Update="Classes\Monsters.cs">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Compile>
-      <Compile Update="Classes\Player.cs">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Compile>
-      <Compile Update="Classes\Program.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
       <Compile Update="Classes\Room.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
       <Compile Update="Classes\Story.cs">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Compile>
+      <Compile Update="Classes\Creatures\Creature.cs">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Compile>
+      <Compile Update="Classes\Creatures\Monsters.cs">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Compile>
+      <Compile Update="Classes\Creatures\Player.cs">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Compile>
+      <Compile Update="Classes\Run\GameLoop.cs">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Compile>
+      <Compile Update="Classes\Run\Program.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
     </ItemGroup>
