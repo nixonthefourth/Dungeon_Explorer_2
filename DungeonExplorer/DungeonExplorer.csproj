@@ -20,16 +20,13 @@
       <Compile Update="Classes\Fight.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
-      <Compile Update="Classes\Room.cs">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Compile>
       <Compile Update="Classes\Story.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
       <Compile Update="Classes\Creatures\Creature.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
-      <Compile Update="Classes\Creatures\Monsters.cs">
+      <Compile Update="Classes\Creatures\Monster.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
       <Compile Update="Classes\Creatures\Player.cs">
@@ -39,6 +36,9 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
       <Compile Update="Classes\Run\Program.cs">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Compile>
+      <Compile Update="Classes\Navigation\Room.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
     </ItemGroup>

@@ -1,6 +1,6 @@
 namespace DungeonExplorer
 {
-    public class Monsters : Creature
+    public class Monster : Creature
     {
         /// <summary>
         /// Constructor for a monster.
@@ -21,7 +21,7 @@ namespace DungeonExplorer
         /// <param name="monsterHealth">
         /// Initial health monster contains.
         /// </param>
-        public Monsters(string monsterName, int monsterDamage, int monsterLuck, int monsterHealth) : base()
+        public Monster(string monsterName, int monsterDamage, int monsterLuck, int monsterHealth) : base()
         {
             CreatureName = monsterName;
             CreatureDamage = monsterDamage;
@@ -36,18 +36,18 @@ namespace DungeonExplorer
         /// <returns>
         /// Returns objects (instances) randomly selected from the list.
         /// </returns>
-        public static Monsters SelectMonster()
+        public static Monster SelectMonster()
         {
             // List of monsters
-            List<Monsters> monsters = new List<Monsters>()
+            List<Monster> monsters = new List<Monster>()
             {
-                new Monsters("Pride", 20, 1, 100),
-                new Monsters("Greed", 25, 2, 80),
-                new Monsters("Wrath", 15, 2, 100),
-                new Monsters("Envy", 18, 2, 70),
-                new Monsters("Lust", 30, 2, 90),
-                new Monsters("Gluttony", 15, 3, 140),
-                new Monsters("Sloth", 40, 3, 90)
+                new Monster("Pride", 20, 1, 100),
+                new Monster("Greed", 25, 2, 80),
+                new Monster("Wrath", 15, 2, 100),
+                new Monster("Envy", 18, 2, 70),
+                new Monster("Lust", 30, 2, 90),
+                new Monster("Gluttony", 15, 3, 140),
+                new Monster("Sloth", 40, 3, 90)
             };
             
             // Return of the list and random selection of numbers for the objects.

@@ -19,7 +19,7 @@ namespace DungeonExplorer
         public static void FightEncounter(Creature player, Room currentRoom)
         {
             // Generates the enemy
-            Monsters roomMonster = currentRoom.GenerateRoomEnemy();
+            Monster roomMonster = currentRoom.GenerateRoomEnemy();
             
             // If there is an enemy, then start combat
             if (roomMonster != null)

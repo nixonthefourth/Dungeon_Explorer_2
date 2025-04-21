@@ -9,10 +9,10 @@ namespace DungeonExplorer
         /// <returns>
         /// Returns either a generated monster or null, in case no monsters have been created.
         /// </returns>
-        public Monsters GenerateRoomEnemy()
+        public Monster GenerateRoomEnemy()
         {
             // Case where, generation is successful
-            if (IHelper.GenerateRandom() <= 7) return Monsters.SelectMonster();
+            if (IHelper.GenerateRandom() <= 7) return Monster.SelectMonster();
             
             // Unsuccessful case
             else return null;
