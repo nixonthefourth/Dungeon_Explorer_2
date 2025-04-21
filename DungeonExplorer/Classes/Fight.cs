@@ -1,9 +1,9 @@
 namespace DungeonExplorer
 {
-    public class Fight : IHelper, IHealable
+    public class Fight : IHealable
     {
-        private static bool _playerShieldFlag = false;
-        private static bool _playerRunFlag = false;
+        private static bool PlayerShieldFlag { get; set; }
+        private static bool PlayerRunFlag { get; set; }
         
         /// <summary>
         /// The fight system of this game. Handles all the aspects of in-game AI, as well as user actions.
@@ -51,13 +51,13 @@ namespace DungeonExplorer
                     else
                     {
                         // Player's turn
-                        PlayerTurn(player, roomMonster);
+                        Turn(player, roomMonster);
 
-                        // Checking whether run is possible, in case player triggers it
-                        if (_playerRunFlag) break;
+                        // Checking whether a run is possible, in case the player triggers it
+                        if (PlayerRunFlag) break;
                         
                         // Monster's turn
-                        MonsterTurn(roomMonster, player);
+                        Turn(roomMonster, player, 10);
                     }
                 }
             }
@@ -80,7 +80,7 @@ namespace DungeonExplorer
         /// <param name="target">
         /// The target enemy that is supposed to be damaged
         /// </param>
-        private static void PlayerTurn(Creature player, Creature target)
+        private static void Turn(Creature player, Creature target)
         {
             // Entrance message
             IHelper.DisplayMessage($"\n{player.CreatureName}'s turn\n" +
@@ -118,14 +118,14 @@ namespace DungeonExplorer
                         if (IHelper.GenerateRandom() + player.CreatureLuck >= 5)
                         {
                             IHelper.DisplayMessage($"\n{player.CreatureName} has been shielded!");
-                            _playerShieldFlag = true;
+                            PlayerShieldFlag = true;
                         }
 
                         // Unsuccessful shielding
                         else
                         {
                             IHelper.DisplayMessage($"\n{player.CreatureName}'s shielding was unlucky.");
-                            _playerShieldFlag = false;
+                            PlayerShieldFlag = false;
                         }
 
                         break;
@@ -143,14 +143,14 @@ namespace DungeonExplorer
                         if (IHelper.GenerateRandom() + player.CreatureLuck >= 7)
                         {
                             // Setting a flag to true, so the player can run away
-                            _playerRunFlag = true;
+                            PlayerRunFlag = true;
                             IHelper.DisplayMessage($"\n{player.CreatureName} has managed to run away!");
 
                             // Make sure the enemy is dead, and the new enemy can be generated later.
                             target.CreatureHealth = 0;
                             
                             // Return the flag
-                            _playerRunFlag = false;
+                            PlayerRunFlag = false;
 
                             break;
                         }
@@ -159,7 +159,7 @@ namespace DungeonExplorer
                         else
                         {
                             // Setting a flag to false, so the player stays in the fight loop
-                            _playerRunFlag = false;
+                            PlayerRunFlag = false;
                             IHelper.DisplayMessage("\nNo can do baby doll, you are staying here.");
 
                             break;
@@ -188,7 +188,11 @@ namespace DungeonExplorer
         /// <param name="target">
         /// The target of the monster's attack.
         /// </param>
-        private static void MonsterTurn(Creature monster, Creature target)
+        ///
+        /// <param name="shieldReturn">
+        /// The amount of shielding dealt.
+        /// </param>
+        private static void Turn(Creature monster, Creature target, int shieldReturn)
         {
             // Entrance message
             IHelper.DisplayMessage($"\n{monster.CreatureName}'s turn\n" +
@@ -205,41 +209,33 @@ namespace DungeonExplorer
                  * In case the player doesn't manage to do so – monster attacks.
                  */
                 
-                if (_playerRunFlag is false)
+                if (PlayerRunFlag is false)
                 {
                     // Enemy damages, if this case mathematically is less or equal to 8
                     if (IHelper.GenerateRandom() - monster.CreatureLuck <= 7)
                     {
                         // Checking the shield mechanic
-                        if (_playerShieldFlag)
+                        if (PlayerShieldFlag)
                         {
                             // Decreasing damage and then creature would be dealing it
-                            monster.CreatureDamage -= 10;
+                            monster.CreatureDamage -= shieldReturn;
                             IDamagable.Damage(monster, target);
                             
                             // Returning creature's damage, so it doesn't change permanently
                             // Changing value of a flag as well, which brings stats back to normal
-                            monster.CreatureDamage += 10;
-                            _playerRunFlag = false;
+                            monster.CreatureDamage += shieldReturn;
+                            PlayerRunFlag = false;
                         }
                         
                         // If shielding was unsuccessful
-                        else
-                        {
-                            // Dealing regular damage
-                            IDamagable.Damage(monster, target);
-                        }
+                        else IDamagable.Damage(monster, target);
                     }
                     
                     // Enemy heals from the attack
                     if (IHelper.GenerateRandom() - monster.CreatureLuck >= 8)
                     {
                         // Checks the liability of this case
-                        if (monster.CreatureHealth <= 60)
-                        {
-                            // Activating the healing sequence
-                            IHealable.HealCreature(monster, 5);
-                        }
+                        if (monster.CreatureHealth <= 60) IHealable.HealCreature(monster, 5);
                     }
                 }
             }
