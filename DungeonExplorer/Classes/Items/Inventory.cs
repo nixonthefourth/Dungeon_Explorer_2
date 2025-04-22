@@ -1,7 +1,7 @@
 namespace DungeonExplorer
 {
-    public class Inventory
+    public class Inventory : ICollectible
     {
-    
+        
     }
 }

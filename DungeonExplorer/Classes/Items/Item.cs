@@ -110,5 +110,39 @@ namespace DungeonExplorer
             ItemHealth = itemHealth;
             ItemLuck = itemLuck;
         }
+
+        /// <summary>
+        /// Stores a list of items with the corresponding parameters.
+        /// </summary>
+        /// 
+        /// <returns>
+        /// Returns the object of the item list.
+        /// </returns>
+        public static Item SelectItem()
+        {
+            List<Item> items = new List<Item>()
+            {
+                // Weapons
+                new Weapon("Jar of Marmelade", 20, 0, 0),
+                new Weapon("Laser Pointer", 3, 3, 0),
+                new Weapon("Razor Blade", 15, 1, 0),
+                new Weapon("Mixer", 30, 2, 0),
+                new Weapon("The Judge", 25, 2, 10),
+                
+                // Potions
+                new Potion("Cheeky Potion", 0, 0, 20),
+                new Potion("Flower Bunch", 0, 1, 10),
+                new Potion("Potion of Clumsy Words", 20, 1, 0),
+                new Potion("Bottle of VK", 0, 4, 15)
+            };
+
+            // Returns the object
+            return items[new Random().Next(items.Count)];
+        }
+
+        public virtual void UseItem(Player player, Item item)
+        {
+            IHelper.DisplayMessage("Item is picked up.");
+        }
     }
 }

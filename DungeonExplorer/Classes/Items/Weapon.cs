@@ -29,5 +29,22 @@ namespace DungeonExplorer
             ItemLuck = weaponLuck;
             ItemHealth = weaponHealth;
         }
+        
+        /// <summary>
+        /// Item is activated.
+        /// </summary>
+        /// 
+        /// <param name="player">
+        /// Player, who uses the item.
+        /// </param>
+        /// 
+        /// <param name="item">
+        /// Item, which is being used.
+        /// </param>
+        public override void UseItem(Player player, Item item)
+        {
+            IHelper.DisplayMessage($"\nYou have picked up a weapon {item.ItemName}!");
+            Collect(player, item);
+        }
     }
 }

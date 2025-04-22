@@ -16,10 +16,6 @@ namespace DungeonExplorer
             Story.StoryStart();
             player.GetCreatureName();
             Story.CharacterNameConfirmation(player);
-            
-            // Testing Sequence
-            Room room1 = new Room();
-            Fight.FightEncounter(player, room1);
         }
     }
 }

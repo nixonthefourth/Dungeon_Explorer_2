@@ -38,10 +38,10 @@ namespace DungeonExplorer
             set
             {
                 // If there is no valid input
-                if (string.IsNullOrWhiteSpace(value.ToString())) _creatureDamage = 20;
+                if (string.IsNullOrWhiteSpace(value.ToString())) _creatureDamage = 10;
                 
                 // If value is less then 0
-                else if (value < 0) _creatureDamage = 20;
+                else if (value < 0) _creatureDamage = 10;
                 
                 // Assigns the proper value
                 else _creatureDamage = value;
