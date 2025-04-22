@@ -56,8 +56,11 @@ namespace DungeonExplorer
                         // Checking whether a run is possible, in case the player triggers it
                         if (PlayerRunFlag) break;
                         
-                        // Monster's turn
-                        Turn(roomMonster, player, 10);
+                        // Monster's turn, when unique attacks are implemented. Allows for more dynamic AI.
+                        if (roomMonster is Monster m) m.UniqueAttackBehavior(player);
+                        
+                        // Fallback case, when stuff doesn't work out
+                        else IDamagable.Damage(roomMonster, player);
                     }
                 }
             }
