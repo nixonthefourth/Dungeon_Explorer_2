@@ -83,7 +83,26 @@ namespace DungeonExplorer
                 else _itemLuck = value;
             }
         }
-
+        
+        /// <summary>
+        /// Initializes a new instance of the Item class with the specified parameters.
+        /// </summary>
+        /// 
+        /// <param name="itemName">
+        /// The name of the item.
+        /// </param>
+        /// 
+        /// <param name="itemDamage">
+        /// The damage value of the item.
+        /// </param>
+        /// 
+        /// <param name="itemHealth">
+        /// The health value of the item.
+        /// </param>
+        /// 
+        /// <param name="itemLuck">
+        /// Luck value of the item.
+        /// </param>
         public Item(string itemName, int itemDamage, int itemHealth, int itemLuck)
         {
             ItemName = itemName;
