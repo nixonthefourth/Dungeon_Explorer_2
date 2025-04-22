@@ -1,58 +1,57 @@
 namespace DungeonExplorer
 {
-    public class Monster : Creature
+    public abstract class Monster : Creature
     {
         /// <summary>
-        /// Constructor for a monster.
+        /// Constructor for the monster parameter.
+        /// </summary>
+        ///
+        /// <param name="monsterName">
+        /// </param>
+        /// <param name="monsterDamage"></param>
+        /// <param name="monsterLuck"></param>
+        /// <param name="monsterHealth"></param>
+        public Monster(string monsterName, int monsterDamage, int monsterLuck, int monsterHealth) 
+            : base(monsterName, monsterDamage, monsterLuck, monsterHealth) { }
+
+        /// <summary>
+        /// Prepares for the static polymorphic behaviour.
+        /// Responsible for the damage dealing.
         /// </summary>
         /// 
-        /// <param name="monsterName">
-        /// Name of the monster.
+        /// <param name="target">
+        /// Target creature, player in this case.
         /// </param>
-        /// 
-        /// <param name="monsterDamage">
-        /// Damage that monster deals.
-        /// </param>
-        /// 
-        /// <param name="monsterLuck">
-        /// Luck multiplier for the actions monster's AI takes.
-        /// </param>
-        /// 
-        /// <param name="monsterHealth">
-        /// Initial health monster contains.
-        /// </param>
-        public Monster(string monsterName, int monsterDamage, int monsterLuck, int monsterHealth) 
-            : base(monsterName, monsterDamage, monsterLuck, monsterHealth)
+        public virtual void UniqueAttackBehavior(Creature target)
         {
-            CreatureName = monsterName;
-            CreatureDamage = monsterDamage;
-            CreatureLuck = monsterLuck;
-            CreatureHealth = monsterHealth;
+            IDamagable.Damage(this, target); // Default behavior
         }
 
         /// <summary>
-        /// Boring way of selecting enemies based on cardinal sins.
+        /// Monster selector.
         /// </summary>
         /// 
         /// <returns>
-        /// Returns objects (instances) randomly selected from the list.
+        /// Returns the object of the individual monster using random unique numbers.
         /// </returns>
+        ///
+        /// <remarks>
+        /// Objects of the individual monsters are created and added to the list.
+        /// </remarks>
         public static Monster SelectMonster()
         {
-            // List of monsters
+            // List expansion
             List<Monster> monsters = new List<Monster>()
             {
-                new Monster("Pride", 20, 1, 100),
-                new Monster("Greed", 25, 2, 80),
-                new Monster("Wrath", 15, 2, 100),
-                new Monster("Envy", 18, 2, 70),
-                new Monster("Lust", 30, 2, 90),
-                new Monster("Gluttony", 15, 3, 140),
-                new Monster("Sloth", 40, 3, 90)
+                new Pride(),
+                new Greed(),
+                new Wrath(),
+                new Envy()
             };
-            
-            // Return of the list and random selection of numbers for the objects.
+
+            // Returns the object
             return monsters[new Random().Next(monsters.Count)];
         }
     }
+
 }

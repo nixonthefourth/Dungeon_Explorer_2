@@ -1,6 +1,6 @@
 namespace DungeonExplorer
 {
-    public abstract class Creature : IDamagable
+    public abstract class Creature : IDamagable, IHealable
     {
         // Private Variables
         private string _creatureName;
