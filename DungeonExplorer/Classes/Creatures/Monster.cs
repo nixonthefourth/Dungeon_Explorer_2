@@ -21,7 +21,8 @@ namespace DungeonExplorer
         /// <param name="monsterHealth">
         /// Initial health monster contains.
         /// </param>
-        public Monster(string monsterName, int monsterDamage, int monsterLuck, int monsterHealth) : base()
+        public Monster(string monsterName, int monsterDamage, int monsterLuck, int monsterHealth) 
+            : base(monsterName, monsterDamage, monsterLuck, monsterHealth)
         {
             CreatureName = monsterName;
             CreatureDamage = monsterDamage;

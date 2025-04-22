@@ -21,7 +21,8 @@ namespace DungeonExplorer
         /// <param name="playerHealth">
         /// Player's health parameter.
         /// </param>
-        public Player(string playerName, int playerDamage, int playerLuck, int playerHealth) : base()
+        public Player(string playerName, int playerDamage, int playerLuck, int playerHealth) 
+            : base(playerName, playerDamage, playerLuck, playerHealth)
         {
             CreatureName = playerName;
             CreatureDamage = playerDamage;
