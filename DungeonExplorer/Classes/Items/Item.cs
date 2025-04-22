@@ -140,9 +140,20 @@ namespace DungeonExplorer
             return items[new Random().Next(items.Count)];
         }
 
+        /// <summary>
+        /// Uses item.
+        /// </summary>
+        /// 
+        /// <param name="player">
+        /// Player, who is applying the item.
+        /// </param>
+        /// 
+        /// <param name="item">
+        /// Item, which is found and should be assigned.
+        /// </param>
         public virtual void UseItem(Player player, Item item)
         {
-            IHelper.DisplayMessage("Item is picked up.");
+            IHelper.DisplayMessage("Item is found");
         }
     }
 }
