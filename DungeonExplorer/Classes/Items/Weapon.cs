@@ -17,11 +17,17 @@ namespace DungeonExplorer
         /// <param name="weaponLuck">
         /// The weapon's luck parameter.
         /// </param>
-        public Weapon(string weaponName, int weaponDamage, int weaponLuck) : base()
+        ///
+        /// <param name="weaponHealth">
+        /// Health that may be added by the use of a weapon.
+        /// </param>
+        public Weapon(string weaponName, int weaponDamage, int weaponLuck, int weaponHealth) 
+            : base(weaponName, weaponDamage, weaponLuck, weaponHealth)
         {
             ItemName = weaponName;
             ItemDamage = weaponDamage;
             ItemLuck = weaponLuck;
+            ItemHealth = weaponHealth;
         }
     }
 }

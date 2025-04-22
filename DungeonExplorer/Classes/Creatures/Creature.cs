@@ -9,18 +9,19 @@ namespace DungeonExplorer
         private int _creatureHealth;
         
         // Public Variables
+        
         /// <summary>
         /// Returns and sets the health parameter.
         /// </summary>
         public string CreatureName
         {
-            get{ return _creatureName; }
+            get { return _creatureName; }
             set
             {
                 // Sets default values
                 if (string.IsNullOrEmpty(value))
                 {
-                    _creatureName = "DEFAULT NAME";
+                    _creatureName = "Default Name";
                 }
                 
                 // Sets proper value
@@ -33,7 +34,7 @@ namespace DungeonExplorer
         /// </summary>
         public int CreatureDamage
         {
-            get{ return _creatureDamage; }
+            get { return _creatureDamage; }
             set
             {
                 // If there is no valid input
@@ -84,12 +85,24 @@ namespace DungeonExplorer
         }
         
         /// <summary>
-        /// Constructor for the creature
+        /// Constructor for the creature.
         /// </summary>
-        /// <param name="creatureName"></param>
-        /// <param name="creatureDamage"></param>
-        /// <param name="creatureLuck"></param>
-        /// <param name="creatureHealth"></param>
+        /// 
+        /// <param name="creatureName">
+        /// Name of the creature.
+        /// </param>
+        /// 
+        /// <param name="creatureDamage">
+        /// Damage creature deals.
+        /// </param>
+        ///
+        /// <param name="creatureLuck">
+        /// The luck parameter of the creature.
+        /// </param>
+        /// 
+        /// <param name="creatureHealth">
+        /// Health parameter of the creature.
+        /// </param>
         public Creature(string creatureName, int creatureDamage, int creatureLuck, int creatureHealth) 
         {
             CreatureName = creatureName;
