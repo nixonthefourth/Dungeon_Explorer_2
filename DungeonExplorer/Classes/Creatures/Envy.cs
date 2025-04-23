@@ -23,7 +23,7 @@ namespace DungeonExplorer
                 // Actual implementation
                 for (int i = 0; i < 3; i++)
                 {
-                    IHelper.DisplayMessage($"\nStrike {i} of 3");
+                    IHelper.DisplayMessage($"\nStrike {i} of 2");
                     IDamagable.Damage(this, target);
                 }
             }

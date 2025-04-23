@@ -63,20 +63,15 @@ namespace DungeonExplorer
         {
             Console.Clear();
             
-            IHelper.DisplayMessage("\nWould you like to get room description? Y/N ");
-
-            while (true)
-            {
-                string userResponse = Console.ReadLine().ToLower();
+            string roomMessage1 = "\nI would rather not go back to the old house.";
+            string roomMessage2 = "\nSomething has creaked...";
+            string roomMessage3 = "\nThis rooms smells like rats in the days of Isaac Newton";
             
-                if (userResponse is "y")
-                {
-                    IHelper.DisplayMessage("\nI would rather not go back to the old house.");
-                    break;
-                }
-                else if (userResponse is "n") break;
-                else IHelper.DisplayMessage("\nInvalid response. Please try again: ");
-            }
+            // Append An Array
+            string[] roomMessage = new string[] { roomMessage1, roomMessage2, roomMessage3 };
+                
+            // Select The Displayed Message Randomly
+            IHelper.DisplayMessage(roomMessage[IHelper.GenerateRandom() % 3]);
         }
         
         /// <summary>

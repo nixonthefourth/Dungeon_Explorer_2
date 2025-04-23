@@ -16,7 +16,7 @@ namespace DungeonExplorer
         /// <param name="currentRoom">
         /// Room, where the fight is taking place.
         /// </param>
-        public static void FightEncounter(Creature player, Room currentRoom)
+        public static void FightEncounter(Player player, Room currentRoom)
         {
             // Generates the enemy
             Monster roomMonster = currentRoom.GenerateRoomEnemy();
@@ -33,6 +33,10 @@ namespace DungeonExplorer
                 // The fighting system itself
                 while (true)
                 {
+                    // Validation
+                    HealthValidation(player);
+                    EnemyHealthValidation(roomMonster);
+                    
                     // Checks the monster's health
                     if (roomMonster.CreatureHealth <= 0)
                     {
@@ -256,13 +260,25 @@ namespace DungeonExplorer
         /// <param name="player">
         /// Player's entity that is passed to the method to link player's data.
         /// </param>
-        private static void HealthValidation(Creature player)
+        public static void HealthValidation(Player player)
         {
             if (player.CreatureHealth <= 0)
             {
                 player.CreatureHealth = 0;
                 Story.LoseAdventure();
             }
+        }
+
+        /// <summary>
+        /// Validates the health of a monster to ensure it does not drop below 0.
+        /// Prevents errors related to negative health values.
+        /// </summary>
+        /// <param name="monster">
+        /// Monster entity whose health is being validated and updated if required.
+        /// </param>
+        public static void EnemyHealthValidation(Monster monster)
+        {
+            if (monster.CreatureHealth <= 0) monster.CreatureHealth = 0;
         }
     }
 }

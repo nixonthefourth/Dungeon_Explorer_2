@@ -9,12 +9,14 @@ namespace DungeonExplorer
         public static Room room5;
         public static Room room6;
         public static Room room7;
+        public static Room currentRoom;
         
         /// <summary>
         /// Method for generating rooms.
         /// </summary>
-        public void GenerateRooms()
+        public Room GenerateRooms()
         {
+            // Generating rooms
             room1 = new Room("Room 1");
             room2 = new Room("Room 2");
             room3 = new Room("Room 3");
@@ -22,10 +24,17 @@ namespace DungeonExplorer
             room5 = new Room("Room 5");
             room6 = new Room("Room 6");
             room7 = new Room("Room 7");
+            
+            // Setting the first room as the current room
+            currentRoom = room1;
+            
+            return currentRoom;
         }
 
         /// <summary>
         /// Method for executing the room.
+        /// If the player reaches the end of the game, the game is won.
+        /// Measured in the room count. Room 7 is the end of the game.
         /// </summary>
         /// 
         /// <param name="currentRoom">
@@ -33,11 +42,11 @@ namespace DungeonExplorer
         /// </param>
         public void ExecuteRoom(Room currentRoom, Player player, Inventory inventory)
         {
-            // Getting room's description
-            Story.GetRoomDescription();
-            
             // Execution loop
             Menu.RoomMenu(player, currentRoom, inventory);
+            
+            // Winning condition
+            if (currentRoom == room7) Story.WinAdventure();
         }
 
         /// <summary>

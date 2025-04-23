@@ -21,13 +21,18 @@ namespace DungeonExplorer
         /// <param name="weaponHealth">
         /// Health that may be added by the use of a weapon.
         /// </param>
-        public Weapon(string weaponName, int weaponDamage, int weaponLuck, int weaponHealth) 
-            : base(weaponName, weaponDamage, weaponLuck, weaponHealth)
+        ///
+        /// <param name="itemCollected">
+        /// Item is collected or not.
+        /// </param>
+        public Weapon(string weaponName, int weaponDamage, int weaponLuck, int weaponHealth, bool itemCollected) 
+            : base(weaponName, weaponDamage, weaponLuck, weaponHealth, itemCollected)
         {
             ItemName = weaponName;
             ItemDamage = weaponDamage;
             ItemLuck = weaponLuck;
             ItemHealth = weaponHealth;
+            ItemCollected = itemCollected;
         }
         
         /// <summary>

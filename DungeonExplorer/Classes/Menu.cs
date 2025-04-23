@@ -25,7 +25,7 @@ namespace DungeonExplorer
         /// </remarks>
         public static void InventoryMenu(Player player, Item item, Inventory inventory)
         {
-            IHelper.DisplayMessage("Inventory menu:" +
+            IHelper.DisplayMessage("\nInventory menu:" +
                                    "\n1 | Display inventory" +
                                    "\n2 | Remove item" +
                                    "\n3 | Activate the item" +
@@ -44,10 +44,7 @@ namespace DungeonExplorer
                     
                     // Choosing options
                     // Display inventory option
-                    if (menuAction == 1)
-                    {
-                        inventory.DisplayInventory();
-                    }
+                    if (menuAction == 1) inventory.DisplayInventory();
                     
                     // Remove the item option
                     else if (menuAction == 2)
@@ -84,7 +81,7 @@ namespace DungeonExplorer
                         while (true)
                         {
                             // Item input
-                            IHelper.DisplayMessage("\nPlease enter the name of the item you want to remove: ");
+                            IHelper.DisplayMessage("\nPlease enter the name of the item you want to select: ");
                             itemName = Console.ReadLine();
                             
                             // Input validation
@@ -98,7 +95,7 @@ namespace DungeonExplorer
                         }
                         
                         // Item is selected
-                        inventory.SelectItem(player, item);
+                        inventory.SelectItem(player);
                     }
                     
                     // Sorting weapons option
@@ -120,7 +117,7 @@ namespace DungeonExplorer
             
             catch (Exception)
             {
-                IHelper.DisplayMessage("Invalid input. Only ints are allowed.");
+                IHelper.DisplayMessage("\nInvalid input. Only ints are allowed.");
             }
         }
 
@@ -151,23 +148,30 @@ namespace DungeonExplorer
             int itemCounter = 0;
             int monsterCounter = 0;
             
+            // Displaying player's status
+            IHelper.DisplayMessage($"\n{player.CreatureName} is in {currentRoom.RoomName}." +
+                                   $"\nHealth: {player.CreatureHealth}" +
+                                   $"\nDamage: {player.CreatureDamage}" +
+                                   $"\nLuck: {player.CreatureLuck}");
+            
             // Displaying menu
-            IHelper.DisplayMessage("\nActions:" +
+            IHelper.DisplayMessage("\n\nGame actions:" +
                                    "\n1 | Previous room" +
                                    "\n2 | Next room" +
                                    "\n3 | Fight" +
                                    "\n4 | Look for items" +
-                                   "\n5 | Manage inventory");
+                                   "\n5 | Manage inventory" +
+                                   "\n6 | Get room description");
 
             // Input validation
-            while (true)
+            try
             {
-                try
+                while (true)
                 {
                     Item roomItem = null;
                     
                     // Collecting input
-                    IHelper.DisplayMessage("\nPlease enter the desired action from the list: ");
+                    IHelper.DisplayMessage("\n\nPlease enter the desired action from the list: ");
                     int menuAction = int.Parse(Console.ReadLine());
                     
                     // Choosing options
@@ -201,7 +205,7 @@ namespace DungeonExplorer
                     else if (menuAction == 2 && monsterCounter != 2)
                     {
                         IHelper.DisplayMessage("\nYou can't move to the next room!" +
-                                               "\nYou still have to beat more monsters.");
+                                               $"\nYou still have to beat {3 - monsterCounter} monsters.");
                     }
                     
                     // Fight option
@@ -222,10 +226,16 @@ namespace DungeonExplorer
                         IHelper.DisplayMessage("\nYou found an item!");
                         
                         // Item is added to the inventory
-                        bool addItem = inventory.AddItem(roomItem);
+                        inventory.AddItem(roomItem);
                         
                         // The counter increases
                         itemCounter++;
+                    }
+                    
+                    // Option, where the item search is unsuccessful
+                    else if (menuAction == 4 && itemCounter != 0)
+                    {
+                        IHelper.DisplayMessage("\nItems are already found in the room!");
                     }
                     
                     // Option, where the player manages the inventory
@@ -235,20 +245,24 @@ namespace DungeonExplorer
                         Story.ConfirmationMessage();
                         
                         // Inventory management system
-                        Menu.InventoryMenu(player, roomItem, inventory);
+                        InventoryMenu(player, roomItem, inventory);
+                        
+                        break;
                     }
-
-                    // Beating enough monsters is important to finish the room and move to the next one
-                    if (monsterCounter < 3)
+                    
+                    // Option, where the user gets a description
+                    else if (menuAction == 6)
                     {
-                        IHelper.DisplayMessage($"\nYou still have to beat {3 - monsterCounter} monsters.");
+                        Story.GetRoomDescription();
+                        
+                        break;
                     }
                 }
-                
-                catch (Exception)
-                {
-                    IHelper.DisplayMessage("\nOnly ints are allowed.");
-                }
+            }
+            
+            catch (Exception)
+            {
+                IHelper.DisplayMessage("\nInvalid input. Only ints are allowed.");
             }
         }
     }

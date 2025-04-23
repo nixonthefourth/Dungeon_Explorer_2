@@ -7,6 +7,7 @@ namespace DungeonExplorer
         private protected int _itemDamage;
         private protected int _itemHealth;
         private protected int _itemLuck;
+        private protected bool _itemCollected;
         
         // Public variables
         /// <summary>
@@ -82,6 +83,23 @@ namespace DungeonExplorer
                 else _itemLuck = value;
             }
         }
+
+        /// <summary>
+        /// Indicates whether the item has been collected.
+        /// </summary>
+        public bool ItemCollected
+        {
+            get { return _itemCollected; }
+            set
+            {
+                // Sets default values
+                // Empty case
+                if (string.IsNullOrWhiteSpace(value.ToString())) _itemCollected = false;
+                
+                // Sets the value
+                else _itemCollected = value;
+            }
+        }
         
         /// <summary>
         /// Initializes a new instance of the Item class with the specified parameters.
@@ -102,12 +120,17 @@ namespace DungeonExplorer
         /// <param name="itemLuck">
         /// Luck value of the item.
         /// </param>
-        public Item(string itemName, int itemDamage, int itemHealth, int itemLuck)
+        ///
+        /// <param name="isItemCollected">
+        /// Indicates whether the item has been collected.
+        /// </param>
+        public Item(string itemName, int itemDamage, int itemHealth, int itemLuck, bool isItemCollected)
         {
             ItemName = itemName;
             ItemDamage = itemDamage;
             ItemHealth = itemHealth;
             ItemLuck = itemLuck;
+            ItemCollected = isItemCollected;
         }
 
         /// <summary>
@@ -122,17 +145,17 @@ namespace DungeonExplorer
             List<Item> items = new List<Item>()
             {
                 // Weapons
-                new Weapon("Jar of Marmelade", 20, 0, 0),
-                new Weapon("Laser Pointer", 3, 3, 0),
-                new Weapon("Razor Blade", 15, 1, 0),
-                new Weapon("Mixer", 30, 2, 0),
-                new Weapon("The Judge", 25, 2, 10),
+                new Weapon("Jar of Marmelade", 20, 0, 0, false),
+                new Weapon("Laser Pointer", 3, 3, 0, false),
+                new Weapon("Razor Blade", 15, 1, 0, false),
+                new Weapon("Mixer", 30, 2, 0, false),
+                new Weapon("The Judge", 25, 2, 10, false),
                 
                 // Potions
-                new Potion("Cheeky Potion", 0, 0, 20),
-                new Potion("Flower Bunch", 0, 1, 10),
-                new Potion("Potion of Clumsy Words", 20, 1, 0),
-                new Potion("Bottle of VK", 0, 4, 15)
+                new Potion("Cheeky Potion", 0, 0, 20, false),
+                new Potion("Flower Bunch", 0, 1, 10, false),
+                new Potion("Potion of Clumsy Words", 20, 1, 0, false),
+                new Potion("Bottle of VK", 0, 4, 15, false)
             };
 
             // Returns the object
@@ -152,7 +175,8 @@ namespace DungeonExplorer
         /// </param>
         public virtual void UseItem(Player player, Item item)
         {
-            IHelper.DisplayMessage("Item is found");
+            IHelper.DisplayMessage("\nItem is found");
+            Collect(player, item);
         }
     }
 }

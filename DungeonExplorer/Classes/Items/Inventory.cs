@@ -37,21 +37,16 @@ namespace DungeonExplorer
         /// <remarks>
         /// This method will display a message indicating either success or failure.
         /// </remarks>
-        public bool AddItem(Item item)
+        public void AddItem(Item item)
         {
             // Case, when the inventory is full
-            if (_items.Count >= MaxCapacity)
-            {
-                IHelper.DisplayMessage("Inventory is full!");
-                return false;
-            }
+            if (_items.Count >= MaxCapacity) IHelper.DisplayMessage("\nInventory is full!");
 
             // Adds the item to the inventory
             _items.Add(item);
             
             // Message
-            IHelper.DisplayMessage($"{item.ItemName} added to inventory.");
-            return true;
+            IHelper.DisplayMessage($"\n{item.ItemName} added to inventory.");
         }
 
         /// <summary>
@@ -74,11 +69,11 @@ namespace DungeonExplorer
             if (itemToRemove != null)
             {
                 _items.Remove(itemToRemove);
-                IHelper.DisplayMessage($"{itemName} removed from inventory.");
+                IHelper.DisplayMessage($"\n{itemName} removed from inventory.");
             }
             
             // If the item wasn't found
-            else IHelper.DisplayMessage($"{itemName} not found in inventory.");
+            else IHelper.DisplayMessage($"\n{itemName} not found in inventory.");
         }
 
         /// <summary>
@@ -94,43 +89,66 @@ namespace DungeonExplorer
             // If the inventory is empty
             if (_items.Count == 0)
             {
-                IHelper.DisplayMessage("Inventory is empty.");
+                IHelper.DisplayMessage("\nInventory is empty.");
                 return;
             }
 
             // Displays the inventory
-            IHelper.DisplayMessage("Inventory:");
+            IHelper.DisplayMessage("\nInventory:");
             foreach (var item in _items)
             {
                 IHelper.DisplayMessage($"\n– {item.ItemName}" +
-                                       $"\n Damage: {item.ItemDamage}" +
-                                       $"\n Health: {item.ItemHealth}" +
+                                       $"\nDamage: {item.ItemDamage}" +
+                                       $"\nHealth: {item.ItemHealth}" +
                                        $"\nLuck: {item.ItemLuck}");
             }
         }
 
         /// <summary>
-        /// Item selection mechanism.
+        /// Allows the player to select an item by name and use it if it exists in the inventory.
         /// </summary>
         /// 
         /// <param name="player">
-        /// Player's object.
+        /// The player who is using the item.
         /// </param>
-        /// 
-        /// <param name="item">
-        /// Item's object.
-        /// </param>
-        public void SelectItem(Player player, Item item)
+        public void SelectItem(Player player)
         {
-            // Application of LINQ using lambda expressions
-            var itemToSelect = _items.FirstOrDefault(i => i.ItemName.Equals(item.ItemName, StringComparison.OrdinalIgnoreCase));
-            
-            // If the item is found, it is selected later.
-            if (itemToSelect != null) itemToSelect.UseItem(player, itemToSelect);
-            
-            // If the item wasn't found
-            else IHelper.DisplayMessage($"{item.ItemName} not found in inventory.");
+            // If the inventory is empty, the player can't select an item.
+            if (_items.Count == 0)
+            {
+                IHelper.DisplayMessage("\nInventory is empty. No items to select.");
+                return;
+            }
+
+            string itemName;
+
+            // Input validation loop
+            while (true)
+            {
+                IHelper.DisplayMessage("\nPlease enter the name of the item you want to select: ");
+                itemName = Console.ReadLine().Trim().ToLower();
+
+                if (string.IsNullOrWhiteSpace(itemName))
+                {
+                    IHelper.DisplayMessage("\nInvalid input.");
+                }
+                
+                else break;
+            }
+
+            // Try to find item by name
+            var selectedItem = _items.FirstOrDefault(i => i.ItemName.ToLower() == itemName);
+
+            if (selectedItem != null)
+            {
+                selectedItem.UseItem(player, selectedItem);
+            }
+            else
+            {
+                IHelper.DisplayMessage($"\n{itemName} not found in inventory.");
+            }
         }
+
         
         /// <summary>
         /// Sorts weapons in the descending order by damage. Data is converted into a list.
@@ -143,7 +161,7 @@ namespace DungeonExplorer
                 .OrderByDescending(w => w.ItemDamage)
                 .ToList();
 
-            IHelper.DisplayMessage("Weapons sorted by damage (descending):");
+            IHelper.DisplayMessage("\nWeapons sorted by damage (descending):");
             foreach (var weapon in sortedWeapons)
             {
                 IHelper.DisplayMessage($"\n– {weapon.ItemName}: {weapon.ItemDamage} Damage");
