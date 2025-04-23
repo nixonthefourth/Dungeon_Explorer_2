@@ -3,10 +3,10 @@ namespace DungeonExplorer
     public abstract class Creature : IDamagable, IHealable
     {
         // Private Variables
-        private string _creatureName;
-        private int _creatureDamage;
-        private int _creatureLuck;
-        private int _creatureHealth;
+        private protected string _creatureName;
+        private protected int _creatureDamage;
+        private protected int _creatureLuck;
+        private protected int _creatureHealth;
         
         // Public Variables
         

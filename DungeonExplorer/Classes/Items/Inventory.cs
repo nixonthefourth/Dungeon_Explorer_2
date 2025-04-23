@@ -5,12 +5,12 @@ namespace DungeonExplorer
         /// <summary>
         /// Private collection of items in the inventory.
         /// </summary>
-        private List<Item> _items = new List<Item>();
+        private protected List<Item> _items = new List<Item>();
         
         /// <summary>
         /// Maximum number of items the inventory can hold.
         /// </summary>
-        private const int MaxCapacity = 3;
+        private protected const int MaxCapacity = 3;
 
         /// <summary>
         /// Gets a read-only view of the items in the inventory.

@@ -3,10 +3,10 @@ namespace DungeonExplorer
     public class Item : ICollectible
     {
         // Private variables
-        private string _itemName;
-        private int _itemDamage;
-        private int _itemHealth;
-        private int _itemLuck;
+        private protected string _itemName;
+        private protected int _itemDamage;
+        private protected int _itemHealth;
+        private protected int _itemLuck;
         
         // Public variables
         /// <summary>

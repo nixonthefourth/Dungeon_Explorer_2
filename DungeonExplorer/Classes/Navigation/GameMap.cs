@@ -2,26 +2,26 @@ namespace DungeonExplorer
 {
     public class GameMap
     {
-        static Room room1;
-        static Room room2;
-        static Room room3;
-        static Room room4;
-        static Room room5;
-        static Room room6;
-        static Room room7;
+        public static Room room1;
+        public static Room room2;
+        public static Room room3;
+        public static Room room4;
+        public static Room room5;
+        public static Room room6;
+        public static Room room7;
         
         /// <summary>
         /// Method for generating rooms.
         /// </summary>
         public void GenerateRooms()
         {
-            Room room1 = new Room("Room 1");
-            Room room2 = new Room("Room 2");
-            Room room3 = new Room("Room 3");
-            Room room4 = new Room("Room 4");
-            Room room5 = new Room("Room 5");
-            Room room6 = new Room("Room 6");
-            Room room7 = new Room("Room 7");
+            room1 = new Room("Room 1");
+            room2 = new Room("Room 2");
+            room3 = new Room("Room 3");
+            room4 = new Room("Room 4");
+            room5 = new Room("Room 5");
+            room6 = new Room("Room 6");
+            room7 = new Room("Room 7");
         }
 
         /// <summary>
