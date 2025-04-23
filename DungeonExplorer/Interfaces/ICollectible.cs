@@ -3,6 +3,11 @@ namespace DungeonExplorer
     public class ICollectible : IHelper
     {
         /// <summary>
+        /// Checks whether the item has been collected already.
+        /// </summary>
+        public bool IsCollected { get; set; }
+        
+        /// <summary>
         /// Item is getting picked up.
         /// </summary>
         /// 
@@ -27,10 +32,5 @@ namespace DungeonExplorer
             // If the item is already collected
             else IHelper.DisplayMessage($"\nThis item is already collected!");
         }
-        
-        /// <summary>
-        /// Checks whether the item has been collected already.
-        /// </summary>
-        public bool IsCollected { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace DungeonExplorer
         /// <summary>
         /// Maximum number of items the inventory can hold.
         /// </summary>
-        private const int MaxCapacity = 5;
+        private const int MaxCapacity = 3;
 
         /// <summary>
         /// Gets a read-only view of the items in the inventory.
@@ -108,6 +108,29 @@ namespace DungeonExplorer
                                        $"\nLuck: {item.ItemLuck}");
             }
         }
+
+        /// <summary>
+        /// Item selection mechanism.
+        /// </summary>
+        /// 
+        /// <param name="player">
+        /// Player's object.
+        /// </param>
+        /// 
+        /// <param name="item">
+        /// Item's object.
+        /// </param>
+        public void SelectItem(Player player, Item item)
+        {
+            // Application of LINQ using lambda expressions
+            var itemToSelect = _items.FirstOrDefault(i => i.ItemName.Equals(item.ItemName, StringComparison.OrdinalIgnoreCase));
+            
+            // If the item is found, it is selected later.
+            if (itemToSelect != null) itemToSelect.UseItem(player, itemToSelect);
+            
+            // If the item wasn't found
+            else IHelper.DisplayMessage($"{item.ItemName} not found in inventory.");
+        }
         
         /// <summary>
         /// Sorts weapons in the descending order by damage. Data is converted into a list.
@@ -126,6 +149,5 @@ namespace DungeonExplorer
                 IHelper.DisplayMessage($"\n– {weapon.ItemName}: {weapon.ItemDamage} Damage");
             }
         }
-
     }
 }

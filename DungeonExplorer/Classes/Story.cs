@@ -80,7 +80,7 @@ namespace DungeonExplorer
         }
         
         /// <summary>
-        /// If user loses the adventure.
+        /// If the user loses the adventure.
         /// </summary>
         public static void LoseAdventure()
         {
@@ -99,13 +99,6 @@ namespace DungeonExplorer
         public static void WinAdventure()
         {
             IHelper.DisplayMessage("You have completed the adventure!");
-        }
-
-        public static void FightMessage()
-        {
-            IHelper.DisplayMessage("You have entered the fight!");
-            
-            ConfirmationMessage();
         }
     }
 }

@@ -1,0 +1,247 @@
+namespace DungeonExplorer
+{
+    public class Menu
+    {
+        /// <summary>
+        /// Displays the inventory menu and handles user interactions for inventory management.
+        /// </summary>
+        /// 
+        /// <param name="player">
+        /// The player interacting with the inventory menu.
+        /// </param>
+        /// 
+        /// <param name="item">
+        /// The item to be managed or activated within the inventory menu.
+        /// </param>
+        ///
+        /// <param name="inventory">
+        /// The inventory that is being managed.
+        /// </param>
+        /// 
+        /// <remarks>
+        /// Provides various options including displaying the inventory, removing an item, activating an item,
+        /// sorting weapons, or exiting the menu. Validates user input and ensures proper option handling.
+        /// Displays a message in case of invalid input.
+        /// </remarks>
+        public static void InventoryMenu(Player player, Item item, Inventory inventory)
+        {
+            IHelper.DisplayMessage("Inventory menu:" +
+                                   "\n1 | Display inventory" +
+                                   "\n2 | Remove item" +
+                                   "\n3 | Activate the item" +
+                                   "\n4 | Sort weapons" +
+                                   "\n5 | Exit");
+
+            // Input validation
+            try
+            {
+                // Selection loop for the inventory
+                while (true)
+                {
+                    // Collecting input
+                    IHelper.DisplayMessage("\nPlease enter the desired action from the list: ");
+                    int menuAction = int.Parse(Console.ReadLine());
+                    
+                    // Choosing options
+                    // Display inventory option
+                    if (menuAction == 1)
+                    {
+                        inventory.DisplayInventory();
+                    }
+                    
+                    // Remove the item option
+                    else if (menuAction == 2)
+                    {
+                        string itemName;
+                        
+                        // Input validation
+                        while (true)
+                        {
+                            // Item input
+                            IHelper.DisplayMessage("\nPlease enter the name of the item you want to remove: ");
+                            itemName = Console.ReadLine();
+                            
+                            // Input validation
+                            if (itemName.Length == 0 || itemName == "" || itemName == " ")
+                            {
+                                IHelper.DisplayMessage("\nInvalid input.");
+                            }
+                
+                            // Successful case
+                            else break;
+                        }
+                        
+                        // Item is removed
+                        inventory.RemoveItem(itemName);
+                    }
+                    
+                    // Item is getting actively selected
+                    else if (menuAction == 3)
+                    {
+                        string itemName;
+                        
+                        // Input validation
+                        while (true)
+                        {
+                            // Item input
+                            IHelper.DisplayMessage("\nPlease enter the name of the item you want to remove: ");
+                            itemName = Console.ReadLine();
+                            
+                            // Input validation
+                            if (itemName.Length == 0 || itemName == "" || itemName == " ")
+                            {
+                                IHelper.DisplayMessage("\nInvalid input.");
+                            }
+                
+                            // Successful case
+                            else break;
+                        }
+                        
+                        // Item is selected
+                        inventory.SelectItem(player, item);
+                    }
+                    
+                    // Sorting weapons option
+                    else if (menuAction == 4)
+                    {
+                        inventory.SortWeaponsByDamageDescending();
+                        inventory.DisplayInventory();
+                        
+                        Story.ConfirmationMessage();
+                    }
+                    
+                    // Break option
+                    else if (menuAction == 5)
+                    {
+                        break;
+                    }
+                }
+            }
+            
+            catch (Exception)
+            {
+                IHelper.DisplayMessage("Invalid input. Only ints are allowed.");
+            }
+        }
+
+        /// <summary>
+        /// Displays the room menu and manages user interactions for room navigation, combat,
+        /// item search, and inventory management.
+        /// </summary>
+        /// <param name="player">
+        /// The player interacting within the current room.
+        /// </param>
+        /// 
+        /// <param name="currentRoom">
+        /// The current room being explored by the player.
+        /// </param>
+        /// 
+        /// <param name="inventory">
+        /// The player's inventory available for management.
+        /// </param>
+        /// 
+        /// <remarks>
+        /// Provides several actions, including navigating to the previous or next room, engaging
+        /// in combat with monsters, searching the room for items, and accessing the inventory menu.
+        /// Includes input validation and an appropriate handling of invalid user selections.
+        /// </remarks>
+        public static void RoomMenu(Player player, Room currentRoom, Inventory inventory)
+        {
+            // Local variables
+            int itemCounter = 0;
+            int monsterCounter = 0;
+            
+            // Displaying menu
+            IHelper.DisplayMessage("\nActions:" +
+                                   "\n1 | Previous room" +
+                                   "\n2 | Next room" +
+                                   "\n3 | Fight" +
+                                   "\n4 | Look for items" +
+                                   "\n5 | Manage inventory");
+
+            // Input validation
+            while (true)
+            {
+                try
+                {
+                    Item roomItem = null;
+                    
+                    // Collecting input
+                    IHelper.DisplayMessage("\nPlease enter the desired action from the list: ");
+                    int menuAction = int.Parse(Console.ReadLine());
+                    
+                    // Choosing options
+                    // Previous room option
+                    if (menuAction == 1)
+                    {
+                        IHelper.DisplayMessage("\nMoving back to the previous room...");
+                        GameMap.PreviousRoom();
+                        
+                        break;
+                    }
+                    
+                    // Next room option
+                    else if (menuAction == 2 && monsterCounter == 2)
+                    {
+                        IHelper.DisplayMessage("\nMoving to the next room...");
+                        GameMap.NextRoom();
+                        
+                        break;
+                    }
+                    
+                    // Unsuccessful case for the room movement
+                    else if (menuAction == 2 && monsterCounter != 2)
+                    {
+                        IHelper.DisplayMessage("\nYou can't move to the next room!" +
+                                               "\nYou still have to beat more monsters.");
+                    }
+                    
+                    // Fight option
+                    else if (menuAction == 3 && monsterCounter <= 2)
+                    {
+                        IHelper.DisplayMessage($"\n{player.CreatureName} decides to fight.");
+                        Fight.FightEncounter(player, currentRoom);
+                        
+                        // The counter increases
+                        monsterCounter++;
+                    }
+                    
+                    // Option, where the player looks for the items
+                    else if (menuAction == 4 && itemCounter == 0)
+                    {
+                        // Item is generated
+                        roomItem = currentRoom.GenerateRoomItems();
+                        IHelper.DisplayMessage("\nYou found an item!");
+                        
+                        // Item is added to the inventory
+                        bool addItem = inventory.AddItem(roomItem);
+                        
+                        // The counter increases
+                        itemCounter++;
+                    }
+                    
+                    // Option, where the player manages the inventory
+                    else if (menuAction == 5)
+                    {
+                        // Calling confirmation message
+                        Story.ConfirmationMessage();
+                        
+                        // Inventory management system
+                        Menu.InventoryMenu(player, roomItem, inventory);
+                    }
+
+                    // Beating enough monsters is important to finish the room and move to the next one
+                    if (monsterCounter < 3)
+                    {
+                        IHelper.DisplayMessage($"\nYou still have to beat {3 - monsterCounter} monsters.");
+                    }
+                }
+                
+                catch (Exception)
+                {
+                    IHelper.DisplayMessage("\nOnly ints are allowed.");
+                }
+            }
+        }
+    }
+}
