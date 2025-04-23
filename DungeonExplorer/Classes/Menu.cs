@@ -216,6 +216,8 @@ namespace DungeonExplorer
                         
                         // The counter increases
                         monsterCounter++;
+                        
+                        break;
                     }
                     
                     // Option, where the player looks for the items
@@ -230,6 +232,8 @@ namespace DungeonExplorer
                         
                         // The counter increases
                         itemCounter++;
+                        
+                        break;
                     }
                     
                     // Option, where the item search is unsuccessful
