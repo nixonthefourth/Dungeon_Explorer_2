@@ -174,9 +174,17 @@ namespace DungeonExplorer
                     // Previous room option
                     if (menuAction == 1)
                     {
-                        IHelper.DisplayMessage("\nMoving back to the previous room...");
-                        GameMap.PreviousRoom();
-                        
+                        // Checking if the player is in the first room
+                        // If not, the player is moved back to the previous room.
+                        if (currentRoom.RoomName != "Room 1")
+                        {
+                            IHelper.DisplayMessage("\nMoving back to the previous room...");
+                            GameMap.PreviousRoom(currentRoom);
+                        }
+
+                        // Unsuccessful case for the room movement
+                        else IHelper.DisplayMessage("\nYou are already in the first room.");
+
                         break;
                     }
                     
@@ -184,7 +192,7 @@ namespace DungeonExplorer
                     else if (menuAction == 2 && monsterCounter == 2)
                     {
                         IHelper.DisplayMessage("\nMoving to the next room...");
-                        GameMap.NextRoom();
+                        GameMap.NextRoom(currentRoom);
                         
                         break;
                     }

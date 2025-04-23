@@ -2,6 +2,22 @@ namespace DungeonExplorer
 {
     public class Room : IHelper
     {
+        // Public variables
+        /// <summary>
+        /// Gets or sets the name of the room.
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Represents the name or identifier assigned to a specific room within the dungeon.
+        /// This property is used to track and display the room's unique identity throughout the gameplay.
+        /// </remarks>
+        public string RoomName { get; set; }
+
+        public Room(string roomName)
+        {
+            RoomName = roomName;
+        }
+        
         /// <summary>
         /// Generates enemy in the room.
         /// </summary>
