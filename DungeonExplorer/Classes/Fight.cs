@@ -57,7 +57,7 @@ namespace DungeonExplorer
                         if (PlayerRunFlag) break;
                         
                         // Monster's turn, when unique attacks are implemented. Allows for more dynamic AI.
-                        if (roomMonster is Monster m) m.UniqueAttackBehavior(player);
+                        if (roomMonster is Monster monster) monster.UniqueAttackBehavior(player);
                         
                         // Fallback case, when stuff doesn't work out
                         else IDamagable.Damage(roomMonster, player);
@@ -66,10 +66,7 @@ namespace DungeonExplorer
             }
             
             // Case, when the enemy hasn't been generated
-            else
-            {
-                IHelper.DisplayMessage("There is no enemy, lucky you!\n \n");
-            }
+            else IHelper.DisplayMessage("There is no enemy, lucky you!\n \n");
         }
 
         /// <summary>

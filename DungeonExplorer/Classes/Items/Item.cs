@@ -9,7 +9,6 @@ namespace DungeonExplorer
         private int _itemLuck;
         
         // Public variables
-
         /// <summary>
         /// Name of the item.
         /// </summary>
