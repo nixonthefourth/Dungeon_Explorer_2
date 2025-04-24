@@ -1,9 +1,13 @@
 namespace DungeonExplorer
 {
-    public interface IDamagable : IHelper
+    public interface IDamagable : IHelper, IHealthValidation
     {
         public static void Damage(Creature creatureDamages, Creature creatureReceives)
         {
+            // Validators
+            HealthValidation(creatureDamages);
+            EnemyHealthValidation(creatureReceives);
+            
             // Case, where the creature deals damage
             if (GenerateRandom() <= 7)
             {

@@ -33,21 +33,10 @@ namespace DungeonExplorer
                 // The fighting system itself
                 while (true)
                 {
-                    // Validation
-                    HealthValidation(player);
-                    EnemyHealthValidation(roomMonster);
-                    
                     // Checks the monster's health
                     if (roomMonster.CreatureHealth <= 0)
                     {
                         IHelper.DisplayMessage($"\n{roomMonster.CreatureName} has been killed lol");
-                        break;
-                    }
-                    
-                    // Checks player's health
-                    else if (player.CreatureHealth <= 0)
-                    {
-                        HealthValidation(player);
                         break;
                     }
 
@@ -175,7 +164,7 @@ namespace DungeonExplorer
                 // When the wrong input is given
                 catch (Exception)
                 {
-                    IHelper.DisplayMessage("\n\nOnly ints are allowed!");
+                    IHelper.DisplayMessage("\nOnly ints are allowed!\n");
                 }
             }
         }
@@ -239,7 +228,7 @@ namespace DungeonExplorer
                     }
                     
                     // Enemy heals from the attack
-                    if (IHelper.GenerateRandom() - monster.CreatureLuck >= 8)
+                    else if (IHelper.GenerateRandom() - monster.CreatureLuck >= 8)
                     {
                         // Checks the liability of this case
                         if (monster.CreatureHealth <= 60) IHealable.HealCreature(monster, 5);
@@ -252,36 +241,6 @@ namespace DungeonExplorer
             {
                 IHelper.DisplayMessage("\n\nAn error has occured!");
             }
-        }
-        
-        /// <summary>
-        /// We are validating the health of the player to check whether the player is dead or alive.
-        /// In case of going below 0 health-wise, we are making it equal to 0, so bugs are prevented.
-        /// And then the player is killed.
-        /// </summary>
-        ///
-        /// <param name="player">
-        /// Player's entity that is passed to the method to link player's data.
-        /// </param>
-        public static void HealthValidation(Player player)
-        {
-            if (player.CreatureHealth <= 0)
-            {
-                player.CreatureHealth = 0;
-                Story.LoseAdventure();
-            }
-        }
-
-        /// <summary>
-        /// Validates the health of a monster to ensure it does not drop below 0.
-        /// Prevents errors related to negative health values.
-        /// </summary>
-        /// <param name="monster">
-        /// Monster entity whose health is being validated and updated if required.
-        /// </param>
-        public static void EnemyHealthValidation(Monster monster)
-        {
-            if (monster.CreatureHealth <= 0) monster.CreatureHealth = 0;
         }
     }
 }

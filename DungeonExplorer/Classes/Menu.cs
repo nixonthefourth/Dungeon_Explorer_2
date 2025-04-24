@@ -226,13 +226,21 @@ namespace DungeonExplorer
                     {
                         // Item is generated
                         roomItem = currentRoom.GenerateRoomItems();
-                        IHelper.DisplayMessage("\nYou found an item!");
+
+                        // Item is found
+                        if (roomItem != null)
+                        {
+                            IHelper.DisplayMessage("\nYou found an item!");
                         
-                        // Item is added to the inventory
-                        inventory.AddItem(roomItem);
+                            // Item is added to the inventory
+                            inventory.AddItem(roomItem);
                         
-                        // The counter increases
-                        itemCounter++;
+                            // The counter increases
+                            itemCounter++;
+                        }
+                        
+                        // If the item wasn't found
+                        else IHelper.DisplayMessage("\nYou didn't find any items.");
                         
                         break;
                     }
@@ -240,7 +248,7 @@ namespace DungeonExplorer
                     // Option, where the item search is unsuccessful
                     else if (menuAction == 4 && itemCounter != 0)
                     {
-                        IHelper.DisplayMessage("\nItems are already found in the room!");
+                        IHelper.DisplayMessage("\nItems are already found in this room!");
                     }
                     
                     // Option, where the player manages the inventory
