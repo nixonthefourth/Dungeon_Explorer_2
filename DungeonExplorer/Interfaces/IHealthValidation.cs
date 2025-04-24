@@ -19,18 +19,5 @@ namespace DungeonExplorer
                 Story.LoseAdventure();
             }
         }
-
-        /// <summary>
-        /// Validates the health of a monster to ensure it does not drop below 0.
-        /// Prevents errors related to negative health values.
-        /// </summary>
-        /// 
-        /// <param name="monster">
-        /// Monster entity whose health is being validated and updated if required.
-        /// </param>
-        public static void EnemyHealthValidation(Creature monster)
-        {
-            if (monster.CreatureHealth <= 0) monster.CreatureHealth = 0;
-        }
     }
 }

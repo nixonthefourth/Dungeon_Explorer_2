@@ -34,11 +34,13 @@ namespace DungeonExplorer
                 while (true)
                 {
                     // Checks the player's health
+                    // Validators
                     IHealthValidation.HealthValidation(player);
                     
                     // Checks the monster's health
                     if (roomMonster.CreatureHealth <= 0)
                     {
+                        roomMonster.CreatureHealth = 0;
                         IHelper.DisplayMessage($"\n{roomMonster.CreatureName} has been killed lol");
                         break;
                     }
