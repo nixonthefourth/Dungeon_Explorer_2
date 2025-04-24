@@ -13,6 +13,12 @@ namespace DungeonExplorer
         /// <param name="item">
         /// The item itself, which is getting assigned.
         /// </param>
+        ///
+        /// <remarks>
+        /// Item is getting picked up and assigned to the creature.
+        /// It is checked if the item is already collected. If it is, the message is displayed.
+        /// It is impossible to collect the same item twice.
+        /// </remarks>
         public void Collect(Creature creature, Item item)
         {
             // Assigns the collected value

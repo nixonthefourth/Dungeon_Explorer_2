@@ -65,6 +65,9 @@ namespace DungeonExplorer
             {
                 _items.Remove(itemToRemove);
                 IHelper.DisplayMessage($"\n{itemName} removed from inventory.\n");
+                
+                // Item's parameter is changed to false, so it can be collected again.
+                itemToRemove.ItemCollected = false;
             }
             
             // If the item wasn't found
