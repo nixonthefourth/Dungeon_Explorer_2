@@ -15,7 +15,7 @@ namespace DungeonExplorer
         /// <remarks>
         /// Game works within the probabilites divisible by 10. Hence, it goes from 10 to 100.
         /// The random number is unified within this method, which creates one way of generating numbers.
-        /// Method is sealed as well, so it can't be modified.
+        /// The method is sealed as well, so it can't be modified.
         /// </remarks>
         public static sealed int GenerateRandom()
         {

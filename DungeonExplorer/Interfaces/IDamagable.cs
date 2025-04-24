@@ -2,6 +2,17 @@ namespace DungeonExplorer
 {
     public interface IDamagable : IHelper, IHealthValidation
     {
+        /// <summary>
+        /// Handles damage application from one creature to another in the game.
+        /// </summary>
+        /// 
+        /// <param name="creatureDamages">
+        /// The creature that is dealing damage.
+        /// </param>
+        /// 
+        /// <param name="creatureReceives">
+        /// The creature that is receiving damage.
+        /// </param>
         public static void Damage(Creature creatureDamages, Creature creatureReceives)
         {
             // Validators

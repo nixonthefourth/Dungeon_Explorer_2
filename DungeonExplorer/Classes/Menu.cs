@@ -150,6 +150,12 @@ namespace DungeonExplorer
             int itemCounter = 0;
             int monsterCounter = 0;
             
+            // Run the puzzle sequence
+            if (currentRoom.RoomName == "Room 3" || currentRoom.RoomName == "Room 4" || currentRoom.RoomName == "Room 6")
+            {
+                currentRoom.GenerateRoomPuzzles(player);
+            }
+            
             // Displaying player's status
             IHelper.DisplayMessage($"\n{player.CreatureName} is in {currentRoom.RoomName}." +
                                    $"\nHealth: {player.CreatureHealth}" +
