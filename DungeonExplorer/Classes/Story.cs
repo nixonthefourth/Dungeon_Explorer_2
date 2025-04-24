@@ -14,6 +14,20 @@ namespace DungeonExplorer
         }
 
         /// <summary>
+        /// Initiates the start of the story sequence for the player.
+        /// </summary>
+        /// 
+        /// <param name="player">
+        /// The player object containing details about the character.
+        /// </param>
+        public static void StoryStart(Player player)
+        {
+            LoreStart();
+            player.GetCreatureName();
+            CharacterNameConfirmation(player);
+        }
+
+        /// <summary>
         /// Shows the start of the story.
         /// </summary>
         ///
@@ -21,7 +35,7 @@ namespace DungeonExplorer
         /// The input line is read, and the screen is cleared later.
         /// ConfirmationMessage() is applied.
         /// </remarks>
-        public static void StoryStart()
+        public static void LoreStart()
         {
             IHelper.DisplayMessage("\nWelcome to Dungeon Explorer!\n");
             

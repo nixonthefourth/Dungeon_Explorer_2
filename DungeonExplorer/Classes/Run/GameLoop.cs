@@ -17,9 +17,7 @@ namespace DungeonExplorer
             
             // Runtime
             // Starting story
-            Story.StoryStart();
-            player.GetCreatureName();
-            Story.CharacterNameConfirmation(player);
+            Story.StoryStart(player);
             
             // Generating the game map
             GameMap gameMap = new GameMap();
