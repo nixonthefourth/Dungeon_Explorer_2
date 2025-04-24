@@ -63,5 +63,29 @@ namespace DungeonExplorer
             // Returns the name of the player.
             return CreatureName;
         }
+        
+        /// <summary>
+        /// Upgrades the stats of the specified player, potentially enhancing attributes such as damage, luck, or health.
+        /// </summary>
+        /// 
+        /// <param name="player">
+        /// The player object whose stats will be upgraded.
+        /// </param>
+        public void PlayerStatsUpgrade(Player player)
+        {
+            Console.Clear();
+
+            // Statistics
+            int healthUp = 10;
+            int damageUp = 5;
+            int[] statsUp = { healthUp, damageUp };
+            
+            // Message
+            IHelper.DisplayMessage("\nStats upgrade complete!");
+
+            // Application of the parameters
+            if (IHelper.GenerateRandom() + player.CreatureLuck >= 6) player.CreatureHealth += statsUp[0];
+            else player.CreatureDamage += statsUp[1];
+        }
     }
 }

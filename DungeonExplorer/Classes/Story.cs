@@ -77,9 +77,9 @@ namespace DungeonExplorer
         {
             Console.Clear();
             
-            string roomMessage1 = "\nI would rather not go back to the old house.";
-            string roomMessage2 = "\nSomething has creaked...";
-            string roomMessage3 = "\nThis rooms smells like rats in the days of Isaac Newton";
+            string roomMessage1 = "\nI would rather not go back to the old house.\n";
+            string roomMessage2 = "\nSomething has creaked...\n";
+            string roomMessage3 = "\nThis rooms smells like rats in the days of Isaac Newton\n";
             
             // Append An Array
             string[] roomMessage = new string[] { roomMessage1, roomMessage2, roomMessage3 };

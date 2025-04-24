@@ -2,6 +2,8 @@ namespace DungeonExplorer
 {
     public class Menu
     {
+        // Public variables
+        
         /// <summary>
         /// Displays the inventory menu and handles user interactions for inventory management.
         /// </summary>
@@ -217,6 +219,9 @@ namespace DungeonExplorer
                         
                         // The counter increases
                         monsterCounter++;
+                        
+                        // Increase the statistics parameter
+                        player.PlayerStatsUpgrade(player);
                         
                         break;
                     }
