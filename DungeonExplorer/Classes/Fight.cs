@@ -1,6 +1,6 @@
 namespace DungeonExplorer
 {
-    public class Fight : IHealable
+    public class Fight : IHealable, IHealthValidation
     {
         private static bool PlayerShieldFlag { get; set; }
         private static bool PlayerRunFlag { get; set; }
@@ -33,6 +33,9 @@ namespace DungeonExplorer
                 // The fighting system itself
                 while (true)
                 {
+                    // Checks the player's health
+                    IHealthValidation.HealthValidation(player);
+                    
                     // Checks the monster's health
                     if (roomMonster.CreatureHealth <= 0)
                     {
