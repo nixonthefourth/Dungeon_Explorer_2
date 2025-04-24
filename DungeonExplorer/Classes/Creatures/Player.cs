@@ -31,7 +31,7 @@ namespace DungeonExplorer
         }
 
         /// <summary>
-        /// Gets the player's name. Overrides the abstract method in Creature.
+        /// Gets the player's name. Unique method for the creature.
         /// </summary>
         /// 
         /// <returns>

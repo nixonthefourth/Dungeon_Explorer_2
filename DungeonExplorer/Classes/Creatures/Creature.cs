@@ -3,13 +3,31 @@ namespace DungeonExplorer
     public abstract class Creature : IDamagable, IHealable
     {
         // Private Variables
+        /// <summary>
+        /// Protected variable for the name of the creature.
+        /// Used to individually store the name of the creature rather than all the instances.
+        /// </summary>
         private protected string _creatureName;
+        
+        /// <summary>
+        /// Protected variable for the damage parameter of the creature.
+        /// Used to individually store the damage parameter of the creature rather than all the instances.
+        /// </summary>
         private protected int _creatureDamage;
+        
+        /// <summary>
+        /// Protected variable for the luck of the creature.
+        /// Used to individually store the luck of the creature rather than all the instances.
+        /// </summary>
         private protected int _creatureLuck;
+        
+        /// <summary>
+        /// Protected variable for the health of the creature.
+        /// Used to individually store the health of the creature rather than all the instances.
+        /// </summary>
         private protected int _creatureHealth;
         
         // Public Variables
-        
         /// <summary>
         /// Returns and sets the health parameter.
         /// </summary>

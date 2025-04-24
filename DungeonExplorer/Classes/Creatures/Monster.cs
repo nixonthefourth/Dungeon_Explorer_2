@@ -17,6 +17,7 @@ namespace DungeonExplorer
         /// <summary>
         /// Prepares for the static polymorphic behaviour.
         /// Responsible for the damage dealing.
+        /// Allows for static polymorphism.
         /// </summary>
         /// 
         /// <param name="target">
@@ -24,6 +25,7 @@ namespace DungeonExplorer
         /// </param>
         public virtual void UniqueAttackBehavior(Creature target)
         {
+            // Default implementation
             IDamagable.Damage(this, target); // Default behavior
         }
 
@@ -46,7 +48,10 @@ namespace DungeonExplorer
                 new Pride(),
                 new Greed(),
                 new Wrath(),
-                new Envy()
+                new Envy(),
+                new Lust(),
+                new Gluttony(),
+                new Sloth()
             };
 
             // Returns the object

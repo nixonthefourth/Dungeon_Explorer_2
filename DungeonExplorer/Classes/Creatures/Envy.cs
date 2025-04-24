@@ -9,7 +9,7 @@ namespace DungeonExplorer
 
         /// <summary>
         /// Executes Envy's unique attack behavior on the specified target.
-        /// Uses the technique of polymorphism to create a triple damage technique.
+        /// Uses the technique of static polymorphism to create a triple damage technique.
         /// </summary>
         /// 
         /// <param name="target">
@@ -21,9 +21,9 @@ namespace DungeonExplorer
             if (IHelper.GenerateRandom() + this.CreatureLuck >= 8)
             {
                 // Actual implementation
-                for (int i = 0; i < 3; i++)
+                for (int i = 1; i <= 3; i++)
                 {
-                    IHelper.DisplayMessage($"\nStrike {i} of 2");
+                    IHelper.DisplayMessage($"\nStrike {i} of 3\n");
                     IDamagable.Damage(this, target);
                 }
             }

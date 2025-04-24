@@ -12,6 +12,7 @@ namespace DungeonExplorer
         /// <summary>
         /// Executes the unique attack behavior for Wrath.
         /// It deals double damage if the combined random value and its luck parameter are higher than 5.
+        /// Applies the technique of static polymorphism.
         /// </summary>
         /// 
         /// <param name="target">

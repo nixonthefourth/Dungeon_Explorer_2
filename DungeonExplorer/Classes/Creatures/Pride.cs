@@ -26,6 +26,7 @@ namespace DungeonExplorer
             // Pride deals the double damage if the health parameter drops lower than 60
             if (this.CreatureHealth <= 60)
             {
+                // Double damage
                 IHelper.DisplayMessage($"\n{CreatureName} strikes with fury!");
                 this.CreatureDamage *= 2;
                 

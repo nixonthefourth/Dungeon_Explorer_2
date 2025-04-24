@@ -9,15 +9,18 @@ namespace DungeonExplorer
 
         /// <summary>
         /// Takes its time to attack, but it does deal a lot of damage.
+        /// Applies the technique of static polymorphism.
         /// </summary>
         /// 
         /// <param name="target">
-        /// Target creature.
+        /// Target creature. The player.
         /// </param>
         public override void UniqueAttackBehavior(Creature target)
         {
             // Actual implementation
             IHelper.DisplayMessage("\nSloth strikes your mind!");
+            
+            // Damage deal
             if (IHelper.GenerateRandom() + this.CreatureLuck >= 6)
             {
                 IDamagable.Damage(this, target);

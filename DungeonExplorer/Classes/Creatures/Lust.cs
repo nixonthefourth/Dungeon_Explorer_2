@@ -9,6 +9,7 @@ namespace DungeonExplorer
 
         /// <summary>
         /// Executes the unique attack behavior for the Lust monster.
+        /// Uses the technique of static polymorphism.
         /// </summary>
         /// 
         /// <param name="target">
@@ -17,7 +18,7 @@ namespace DungeonExplorer
         public override void UniqueAttackBehavior(Creature target)
         {
             // Actual implementation with damage and a message
-            IHelper.DisplayMessage("\nLust strikes your balls...");
+            IHelper.DisplayMessage("\nLust strikes your balls...\n");
             IDamagable.Damage(this, target);
         }
     }

@@ -9,7 +9,8 @@ namespace DungeonExplorer
 
         /// <summary>
         /// Creature is getting healed from the player, when monster's health goes lower than 30.
-        /// Otherwise, the regular damage is dealt.
+        /// Otherwise, the regular damage parameter is used.
+        /// Uses static polymorphism.
         /// </summary>
         /// 
         /// <param name="target">
@@ -27,10 +28,10 @@ namespace DungeonExplorer
                 target.CreatureHealth -= 10;
                 
                 // Display status
-                IHelper.DisplayMessage($"\n {target.CreatureName} has lost 10 points!" +
-                                       $"\nNew health: {target.CreatureHealth}" +
-                                       "\n\nGreed sucks out of your wallet..." +
-                                       "\nIt is getting healed by 10 points!");
+                IHelper.DisplayMessage($"\n {target.CreatureName} has lost 10 points!\n" +
+                                       $"\nNew health: {target.CreatureHealth}\n" +
+                                       "\nGreed sucks out of your wallet...\n" +
+                                       "\nIt is getting healed by 10 points!\n");
             }
 
             // Regular damage
