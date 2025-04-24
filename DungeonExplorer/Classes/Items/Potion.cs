@@ -37,6 +37,7 @@ namespace DungeonExplorer
         
         /// <summary>
         /// Item is activated.
+        /// Allows for the static polymorphism.
         /// </summary>
         /// 
         /// <param name="player">

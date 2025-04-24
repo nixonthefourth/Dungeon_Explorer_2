@@ -3,10 +3,29 @@ namespace DungeonExplorer
     public class Item : ICollectible
     {
         // Private variables
+        /// <summary>
+        /// Protected field for the name of the item.
+        /// </summary>
         private protected string _itemName;
+        
+        /// <summary>
+        /// Protected field for the damage parameter of the item.
+        /// </summary>
         private protected int _itemDamage;
+        
+        /// <summary>
+        /// Protected field for the health parameter of the item.
+        /// </summary>
         private protected int _itemHealth;
+        
+        /// <summary>
+        /// Protected field for the luck parameter of the item.
+        /// </summary>
         private protected int _itemLuck;
+        
+        /// <summary>
+        /// Protected field that shows whether the item has been collected.
+        /// </summary>
         private protected bool _itemCollected;
         
         // Public variables

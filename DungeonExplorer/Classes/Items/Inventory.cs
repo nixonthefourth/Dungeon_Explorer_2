@@ -5,7 +5,7 @@ namespace DungeonExplorer
         /// <summary>
         /// Private collection of items in the inventory.
         /// </summary>
-        private protected List<Item> _items = new List<Item>();
+        private List<Item> _items = new List<Item>();
         
         /// <summary>
         /// Maximum number of items the inventory can hold.
@@ -29,24 +29,19 @@ namespace DungeonExplorer
         /// The item added to the inventory.
         /// </param>
         /// 
-        /// <returns>
-        /// True if the item was successfully added; 
-        /// False if the inventory is full.
-        /// </returns>
-        /// 
         /// <remarks>
         /// This method will display a message indicating either success or failure.
         /// </remarks>
         public void AddItem(Item item)
         {
             // Case, when the inventory is full
-            if (_items.Count >= MaxCapacity) IHelper.DisplayMessage("\nInventory is full!");
+            if (_items.Count >= MaxCapacity) IHelper.DisplayMessage("\nInventory is full!\n");
 
             // Adds the item to the inventory
             _items.Add(item);
             
             // Message
-            IHelper.DisplayMessage($"\n{item.ItemName} added to inventory.");
+            IHelper.DisplayMessage($"\n{item.ItemName} added to inventory.\n");
         }
 
         /// <summary>
@@ -69,11 +64,11 @@ namespace DungeonExplorer
             if (itemToRemove != null)
             {
                 _items.Remove(itemToRemove);
-                IHelper.DisplayMessage($"\n{itemName} removed from inventory.");
+                IHelper.DisplayMessage($"\n{itemName} removed from inventory.\n");
             }
             
             // If the item wasn't found
-            else IHelper.DisplayMessage($"\n{itemName} not found in inventory.");
+            else IHelper.DisplayMessage($"\n{itemName} not found in inventory.\n");
         }
 
         /// <summary>
@@ -89,7 +84,7 @@ namespace DungeonExplorer
             // If the inventory is empty
             if (_items.Count == 0)
             {
-                IHelper.DisplayMessage("\nInventory is empty.");
+                IHelper.DisplayMessage("\nInventory is empty.\n");
                 return;
             }
 
@@ -100,7 +95,7 @@ namespace DungeonExplorer
                 IHelper.DisplayMessage($"\n– {item.ItemName}" +
                                        $"\nDamage: {item.ItemDamage}" +
                                        $"\nHealth: {item.ItemHealth}" +
-                                       $"\nLuck: {item.ItemLuck}");
+                                       $"\nLuck: {item.ItemLuck}\n");
             }
         }
 
@@ -116,7 +111,7 @@ namespace DungeonExplorer
             // If the inventory is empty, the player can't select an item.
             if (_items.Count == 0)
             {
-                IHelper.DisplayMessage("\nInventory is empty. No items to select.");
+                IHelper.DisplayMessage("\nInventory is empty. No items to select.\n");
                 return;
             }
 
@@ -136,17 +131,12 @@ namespace DungeonExplorer
                 else break;
             }
 
-            // Try to find item by name
+            // Try to find the item by name
             var selectedItem = _items.FirstOrDefault(i => i.ItemName.ToLower() == itemName);
 
-            if (selectedItem != null)
-            {
-                selectedItem.UseItem(player, selectedItem);
-            }
-            else
-            {
-                IHelper.DisplayMessage($"\n{itemName} not found in inventory.");
-            }
+            // Item selection
+            if (selectedItem != null) selectedItem.UseItem(player, selectedItem);
+            else IHelper.DisplayMessage($"\n{itemName} not found in inventory.\n");
         }
 
         
@@ -161,10 +151,10 @@ namespace DungeonExplorer
                 .OrderByDescending(w => w.ItemDamage)
                 .ToList();
 
-            IHelper.DisplayMessage("\nWeapons sorted by damage (descending):");
+            IHelper.DisplayMessage("\nWeapons sorted by damage (descending):\n");
             foreach (var weapon in sortedWeapons)
             {
-                IHelper.DisplayMessage($"\n– {weapon.ItemName}: {weapon.ItemDamage} Damage");
+                IHelper.DisplayMessage($"\n–{weapon.ItemName}: {weapon.ItemDamage} Damage");
             }
         }
     }
