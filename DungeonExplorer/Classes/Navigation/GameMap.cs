@@ -2,18 +2,53 @@ namespace DungeonExplorer
 {
     public class GameMap
     {
+        /// <summary>
+        /// First room.
+        /// </summary>
         public static Room room1;
+
+        /// <summary>
+        /// Second room.
+        /// </summary>
         public static Room room2;
+
+        /// <summary>
+        /// Third room.
+        /// </summary>
         public static Room room3;
+
+        /// <summary>
+        /// Fourth room.
+        /// </summary>
         public static Room room4;
+
+        /// <summary>
+        /// Fifth room.
+        /// </summary>
         public static Room room5;
+
+        /// <summary>
+        /// Sixth room.
+        /// </summary>
         public static Room room6;
+
+        /// <summary>
+        /// Seventh room.
+        /// </summary>
         public static Room room7;
+
+        /// <summary>
+        /// The room that the player is currently in the game.
+        /// </summary>
         public static Room currentRoom;
-        
+
         /// <summary>
         /// Method for generating rooms.
         /// </summary>
+        ///
+        /// <returns>
+        /// Returns the current room.
+        /// </returns>
         public Room GenerateRooms()
         {
             // Generating rooms
@@ -39,6 +74,14 @@ namespace DungeonExplorer
         /// 
         /// <param name="currentRoom">
         /// Passes the room that is currently being executed.
+        /// </param>
+        ///
+        /// <param name="player">
+        /// Passes the player object.
+        /// </param>
+        ///
+        /// <param name="inventory">
+        /// Passes the inventory object.
         /// </param>
         public void ExecuteRoom(Room currentRoom, Player player, Inventory inventory)
         {
