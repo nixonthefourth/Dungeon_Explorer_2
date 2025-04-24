@@ -75,6 +75,7 @@ namespace DungeonExplorer
 
         /// <summary>
         /// Fight turn that player is taking.
+        /// Allows for static polymorphism.
         /// </summary>
         /// 
         /// <param name="player">
@@ -183,6 +184,8 @@ namespace DungeonExplorer
         /// Executes the monster's turn during a fight encounter.
         /// Handles actionable AI for the monster and determines its attack behavior
         /// based on the player's status and the monster's attributes.
+        ///
+        /// Applies static polymorphism.
         /// </summary>
         /// 
         /// <param name="monster">

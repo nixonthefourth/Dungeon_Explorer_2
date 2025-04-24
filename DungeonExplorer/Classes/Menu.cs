@@ -166,6 +166,7 @@ namespace DungeonExplorer
             // Input validation
             try
             {
+                // Selection loop for the room menu
                 while (true)
                 {
                     Item roomItem = null;

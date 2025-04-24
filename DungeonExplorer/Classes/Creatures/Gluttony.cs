@@ -8,7 +8,7 @@ namespace DungeonExplorer
         public Gluttony() : base("Gluttony", 15, 3, 140) { }
 
         /// <summary>
-        /// Applies static polymorphism to create the unique attack behaviour.
+        /// Applies dynamic polymorphism to create the unique attack behaviour.
         /// Basically, this method is just a wrapper for the damage method.
         /// The monster shows the message and deals regular damage.
         /// </summary>

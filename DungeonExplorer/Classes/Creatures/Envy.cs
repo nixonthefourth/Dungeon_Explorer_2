@@ -9,7 +9,7 @@ namespace DungeonExplorer
 
         /// <summary>
         /// Executes Envy's unique attack behavior on the specified target.
-        /// Uses the technique of static polymorphism to create a triple damage technique.
+        /// Uses the technique of dynamic polymorphism to create a triple damage technique.
         /// </summary>
         /// 
         /// <param name="target">

@@ -9,7 +9,7 @@ namespace DungeonExplorer
 
         /// <summary>
         /// Takes its time to attack, but it does deal a lot of damage.
-        /// Applies the technique of static polymorphism.
+        /// Applies the technique of dynamic polymorphism.
         /// </summary>
         /// 
         /// <param name="target">

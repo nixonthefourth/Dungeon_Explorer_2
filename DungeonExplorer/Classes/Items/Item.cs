@@ -183,6 +183,7 @@ namespace DungeonExplorer
 
         /// <summary>
         /// Uses item.
+        /// Uses for the application of dynamic polymorphism.
         /// </summary>
         /// 
         /// <param name="player">

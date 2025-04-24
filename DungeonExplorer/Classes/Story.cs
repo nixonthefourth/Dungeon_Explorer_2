@@ -14,11 +14,11 @@ namespace DungeonExplorer
         }
 
         /// <summary>
-        /// Shows start of the story.
+        /// Shows the start of the story.
         /// </summary>
         ///
         /// <remarks>
-        /// Input line is read and the the screen is cleared later.
+        /// The input line is read, and the screen is cleared later.
         /// ConfirmationMessage() is applied.
         /// </remarks>
         public static void StoryStart()
@@ -30,7 +30,7 @@ namespace DungeonExplorer
             IHelper.DisplayMessage("\n***\n" +
                                    "Long time ago...\n" +
                                    "In a far-far galaxy...\n" +
-                                   "Monsters out of Biggleswade were born.\n \n" +
+                                   "Monsters out of Lincoln were born.\n \n" +
                                    "It's time for a hero to diabolically demolish them!\n" +
                                    "***\n");
             
@@ -42,11 +42,11 @@ namespace DungeonExplorer
         /// </summary>
         /// 
         /// <param name="creature">
-        /// Pushes the name of the character that player defines.
+        /// Pushes the name of the character that the player defines.
         /// </param>
         ///
         /// <remarks>
-        /// Input line is read and the the screen is cleared later.
+        /// The input line is read, and the screen is cleared later.
         /// ConfirmationMessage() is applied.
         /// </remarks>
         public static void CharacterNameConfirmation(Creature creature)

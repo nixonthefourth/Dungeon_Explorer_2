@@ -15,9 +15,8 @@ namespace DungeonExplorer
             : base(monsterName, monsterDamage, monsterLuck, monsterHealth) { }
 
         /// <summary>
-        /// Prepares for the static polymorphic behaviour.
+        /// Prepares for the dynamic polymorphic behaviour.
         /// Responsible for the damage dealing.
-        /// Allows for static polymorphism.
         /// </summary>
         /// 
         /// <param name="target">

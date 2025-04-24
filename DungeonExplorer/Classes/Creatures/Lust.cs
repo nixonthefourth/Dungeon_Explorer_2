@@ -9,7 +9,7 @@ namespace DungeonExplorer
 
         /// <summary>
         /// Executes the unique attack behavior for the Lust monster.
-        /// Uses the technique of static polymorphism.
+        /// Uses the technique of dynamic polymorphism.
         /// </summary>
         /// 
         /// <param name="target">

@@ -10,7 +10,7 @@ namespace DungeonExplorer
         /// <summary>
         /// Creature is getting healed from the player, when monster's health goes lower than 30.
         /// Otherwise, the regular damage parameter is used.
-        /// Uses static polymorphism.
+        /// Uses dynamic polymorphism.
         /// </summary>
         /// 
         /// <param name="target">

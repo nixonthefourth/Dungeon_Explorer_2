@@ -8,7 +8,7 @@ namespace DungeonExplorer
         public Pride() : base("Pride", 10, 1, 100) { }
 
         /// <summary>
-        /// Inherited unique attack behaviour. Applies the technique of static polymorphism.
+        /// Inherited unique attack behaviour. Applies the technique of dynamic polymorphism.
         /// </summary>
         /// 
         /// <param name="target">
