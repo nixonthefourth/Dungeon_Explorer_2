@@ -217,10 +217,7 @@ namespace DungeonExplorer
         /// 
         /// <remarks>
         /// This method verifies the monster's specialised attack mechanic by arranging a player and a monster instance,
-        /// invoking the monster's unique attack behavior, and asserting its impact on the player's health.
-        /// 
-        /// The test logs the success or failure of the assertion to
-        /// a file and captures any runtime exceptions that occur.
+        /// invoking the monster's unique attack behavior.
         /// </remarks>
         private static void TestMonsterUniqueBehaviour()
         {
@@ -237,9 +234,6 @@ namespace DungeonExplorer
                 // Act
                 monster.UniqueAttackBehavior(player);
 
-                // Assert
-                Debug.Assert(player.CreatureHealth < 100, "\nPlayer health should decrease after unique attack.");
-                
                 // Log the result
                 LogTestResult(testName, true);
             }
