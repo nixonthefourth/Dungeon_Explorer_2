@@ -17,12 +17,6 @@
       <Compile Update="Interfaces\IHelper.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
-      <Compile Update="Classes\Fight.cs">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Compile>
-      <Compile Update="Classes\Story.cs">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Compile>
       <Compile Update="Classes\Creatures\Creature.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
@@ -39,6 +33,12 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
       <Compile Update="Classes\Navigation\Room.cs">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Compile>
+      <Compile Update="Classes\Management\Fight.cs">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Compile>
+      <Compile Update="Classes\Management\Story.cs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Compile>
     </ItemGroup>

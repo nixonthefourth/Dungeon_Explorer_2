@@ -135,7 +135,7 @@ namespace DungeonExplorer
             // Message
             IHelper.DisplayMessage("\nYou need to solve math problems in the room." +
                                    "\nOtherwise, you lose your health." +
-                                   "\n\n 4x = 8" +
+                                   "\n\n4x = 8" +
                                    "\nSolve for x: ");
 
             // Exception handling
