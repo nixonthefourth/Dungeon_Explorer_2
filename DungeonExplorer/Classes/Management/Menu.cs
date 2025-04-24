@@ -289,6 +289,8 @@ namespace DungeonExplorer
                     {
                         Story.GetRoomDescription();
                         
+                        Story.ConfirmationMessage();
+                        
                         break;
                     }
                     
@@ -296,6 +298,8 @@ namespace DungeonExplorer
                     else if (menuAction == 7)
                     {
                         Statistics.DisplayStatistics();
+                        
+                        Story.ConfirmationMessage();
                         
                         break;
                     }

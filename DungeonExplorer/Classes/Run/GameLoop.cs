@@ -17,16 +17,14 @@ namespace DungeonExplorer
             
             // Runtime
             // Starting story
+            Console.WriteLine();
             Story.StoryStart(player);
             
             // Generating the game map
             GameMap gameMap = new GameMap();
             
             var currentRoom = gameMap.GenerateRooms();
-            while (true)
-            {
-                gameMap.ExecuteRoom(currentRoom, player, inventory);
-            }
+            while (true) gameMap.ExecuteRoom(currentRoom, player, inventory);
         }
     }
 }

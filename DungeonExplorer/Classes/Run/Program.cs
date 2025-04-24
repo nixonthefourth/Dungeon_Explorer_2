@@ -11,6 +11,7 @@
         /// </param>
         public static void Main(string[] args)
         {
+            GameTest.RunTest();
             GameLoop.Run();
         }
     }
