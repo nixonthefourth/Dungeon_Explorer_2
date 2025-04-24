@@ -169,7 +169,8 @@ namespace DungeonExplorer
                                    "\n3 | Fight" +
                                    "\n4 | Look for items" +
                                    "\n5 | Manage inventory" +
-                                   "\n6 | Get room description");
+                                   "\n6 | Get room description" +
+                                   "\n7 | Display statistics");
 
             // Input validation
             try
@@ -207,6 +208,9 @@ namespace DungeonExplorer
                         IHelper.DisplayMessage("\nMoving to the next room...");
                         GameMap.NextRoom(currentRoom);
                         
+                        // The counter increases
+                        Statistics.RoomsCleared++;
+                        
                         break;
                     }
                     
@@ -222,6 +226,9 @@ namespace DungeonExplorer
                     {
                         IHelper.DisplayMessage($"\n{player.CreatureName} decides to fight.");
                         Fight.FightEncounter(player, currentRoom);
+                        
+                        // The counter increases
+                        Statistics.EnemiesKilled++;
                         
                         // The counter increases
                         monsterCounter++;
@@ -245,6 +252,9 @@ namespace DungeonExplorer
                         
                             // Item is added to the inventory
                             inventory.AddItem(roomItem);
+                            
+                            // The counter increases
+                            Statistics.ItemsCollected++;
                         
                             // The counter increases
                             itemCounter++;
@@ -278,6 +288,14 @@ namespace DungeonExplorer
                     else if (menuAction == 6)
                     {
                         Story.GetRoomDescription();
+                        
+                        break;
+                    }
+                    
+                    // Statistics display option
+                    else if (menuAction == 7)
+                    {
+                        Statistics.DisplayStatistics();
                         
                         break;
                     }
