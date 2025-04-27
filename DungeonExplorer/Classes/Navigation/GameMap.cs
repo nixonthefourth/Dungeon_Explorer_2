@@ -52,13 +52,13 @@ namespace DungeonExplorer
         public Room GenerateRooms()
         {
             // Generating rooms
-            room1 = new Room("Room 1");
-            room2 = new Room("Room 2");
-            room3 = new Room("Room 3");
-            room4 = new Room("Room 4");
-            room5 = new Room("Room 5");
-            room6 = new Room("Room 6");
-            room7 = new Room("Room 7");
+            room1 = new Room("Room 1", 0, 0);
+            room2 = new Room("Room 2", 0, 0);
+            room3 = new Room("Room 3", 0, 0);
+            room4 = new Room("Room 4", 0, 0);
+            room5 = new Room("Room 5", 0, 0);
+            room6 = new Room("Room 6", 0, 0);
+            room7 = new Room("Room 7", 0, 0);
             
             // Setting the first room as the current room
             currentRoom = room1;

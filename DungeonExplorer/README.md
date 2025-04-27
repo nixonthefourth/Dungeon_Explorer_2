@@ -1,4 +1,4 @@
-**Dungeon Explorer v1.0.1**
+**Dungeon Explorer v1.0.2**
 
 Here is a release of the full version DungeonExplorer.
 
