@@ -13,9 +13,34 @@ namespace DungeonExplorer
         /// </remarks>
         public string RoomName { get; set; }
 
-        public Room(string roomName)
+        /// <summary>
+        /// Gets or sets the count of items available in the room.
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Represents the number of items currently present in a specific room.
+        /// This property is used to track item availability and ensures item-related
+        /// actions are updated appropriately during gameplay.
+        /// </remarks>
+        public int ItemCounter { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of monsters encountered or defeated in the room.
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Tracks the count of monsters associated with the current room. This property is used to manage
+        /// gameplay progression, determining when certain actions, such as moving to the next room, are permitted.
+        /// The value is increased as monsters are defeated, influencing player
+        /// interactions within the dungeon environment.
+        /// </remarks>
+        public int MonsterCounter { get; set; }
+
+        public Room(string roomName, int itemCounter, int monsterCounter)
         {
             RoomName = roomName;
+            ItemCounter = itemCounter;
+            MonsterCounter = monsterCounter;
         }
         
         /// <summary>
