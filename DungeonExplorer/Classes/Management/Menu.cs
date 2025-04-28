@@ -127,10 +127,6 @@ namespace DungeonExplorer
         /// The player interacting within the current room.
         /// </param>
         /// 
-        /// <param name="currentRoom">
-        /// The current room being explored by the player.
-        /// </param>
-        /// 
         /// <param name="inventory">
         /// The player's inventory available for management.
         /// </param>
@@ -195,7 +191,7 @@ namespace DungeonExplorer
                     }
                     
                     // Next room option
-                    else if (menuAction == 2)
+                    else if (menuAction == 2 && GameMap.currentRoom.MonsterCounter == 2)
                     {
                         IHelper.DisplayMessage("\nMoving to the next room...");
                         GameMap.NextRoom();
@@ -206,7 +202,12 @@ namespace DungeonExplorer
                         break;
                     }
                     
-                    
+                    else if (menuAction == 2 && GameMap.currentRoom.MonsterCounter <= 2)
+                    {
+                        IHelper.DisplayMessage($"\nYou still have to kill {3 - GameMap.currentRoom.MonsterCounter} monsters.");
+                        
+                        break;
+                    }
                     
                     // Fight option
                     else if (menuAction == 3 && GameMap.currentRoom.MonsterCounter <= 2)
