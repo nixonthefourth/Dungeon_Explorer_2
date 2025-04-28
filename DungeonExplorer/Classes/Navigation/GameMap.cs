@@ -83,10 +83,10 @@ namespace DungeonExplorer
         /// <param name="inventory">
         /// Passes the inventory object.
         /// </param>
-        public void ExecuteRoom(Room currentRoom, Player player, Inventory inventory)
+        public void ExecuteRoom(Player player, Inventory inventory)
         {
             // Execution loop
-            Menu.RoomMenu(player, currentRoom, inventory);
+            Menu.RoomMenu(player, inventory);
             
             // Winning condition
             if (currentRoom == room7) Story.WinAdventure();
@@ -99,7 +99,7 @@ namespace DungeonExplorer
         /// <param name="currentRoom">
         /// The current room that the player is in. This will be updated to the next room.
         /// </param>
-        public static void NextRoom(Room currentRoom)
+        public static void NextRoom()
         {
             // Switching rooms
             if (currentRoom == room1) currentRoom = room2;
@@ -117,7 +117,7 @@ namespace DungeonExplorer
         /// <param name="currentRoom">
         /// The room the player is currently in, which will be updated to the previous room.
         /// </param>
-        public static void PreviousRoom(Room currentRoom)
+        public static void PreviousRoom()
         {
             // Switching rooms
             if (currentRoom == room7) currentRoom = room6;

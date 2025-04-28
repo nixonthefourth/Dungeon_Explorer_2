@@ -23,8 +23,8 @@ namespace DungeonExplorer
             // Generating the game map
             GameMap gameMap = new GameMap();
             
-            var currentRoom = gameMap.GenerateRooms();
-            while (true) gameMap.ExecuteRoom(currentRoom, player, inventory);
+            // var currentRoom = gameMap.GenerateRooms();
+            while (true) gameMap.ExecuteRoom(player, inventory);
         }
     }
 }

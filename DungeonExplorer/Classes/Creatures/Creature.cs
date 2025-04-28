@@ -34,17 +34,7 @@ namespace DungeonExplorer
         public string CreatureName
         {
             get { return _creatureName; }
-            set
-            {
-                // Sets default values
-                if (string.IsNullOrEmpty(value))
-                {
-                    _creatureName = "Default Name";
-                }
-                
-                // Sets proper value
-                else _creatureName = value;
-            }
+            set { _creatureName = value;  }
         }
 
         /// <summary>
