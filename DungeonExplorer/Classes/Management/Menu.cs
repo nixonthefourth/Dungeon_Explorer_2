@@ -144,16 +144,16 @@ namespace DungeonExplorer
         /// in combat with monsters, searching the room for items, and accessing the inventory menu.
         /// Includes input validation and an appropriate handling of invalid user selections.
         /// </remarks>
-        public static void RoomMenu(Player player, Room currentRoom, Inventory inventory)
+        public static void RoomMenu(Player player, Inventory inventory)
         {
             // Run the puzzle sequence
-            if (currentRoom.RoomName == "Room 3" || currentRoom.RoomName == "Room 4" || currentRoom.RoomName == "Room 6")
+            if (GameMap.currentRoom.RoomName == "Room 3" || GameMap.currentRoom.RoomName == "Room 4" || GameMap.currentRoom.RoomName == "Room 6")
             {
-                currentRoom.GenerateRoomPuzzles(player);
+                GameMap.currentRoom.GenerateRoomPuzzles(player);
             }
             
             // Displaying player's status
-            IHelper.DisplayMessage($"\n{player.CreatureName} is in {currentRoom.RoomName}." +
+            IHelper.DisplayMessage($"\n{player.CreatureName} is in {GameMap.currentRoom.RoomName}." +
                                    $"\nHealth: {player.CreatureHealth}" +
                                    $"\nDamage: {player.CreatureDamage}" +
                                    $"\nLuck: {player.CreatureLuck}");
@@ -186,10 +186,10 @@ namespace DungeonExplorer
                     {
                         // Checking if the player is in the first room
                         // If not, the player is moved back to the previous room.
-                        if (currentRoom.RoomName != "Room 1")
+                        if (GameMap.currentRoom.RoomName != "Room 1")
                         {
                             IHelper.DisplayMessage("\nMoving back to the previous room...");
-                            GameMap.PreviousRoom(currentRoom);
+                            GameMap.PreviousRoom();
                         }
 
                         // Unsuccessful case for the room movement
@@ -199,10 +199,10 @@ namespace DungeonExplorer
                     }
                     
                     // Next room option
-                    else if (menuAction == 2 && currentRoom.MonsterCounter == 2)
+                    else if (menuAction == 2 && GameMap.currentRoom.MonsterCounter == 2)
                     {
                         IHelper.DisplayMessage("\nMoving to the next room...");
-                        GameMap.NextRoom(currentRoom);
+                        GameMap.NextRoom();
                         
                         // The counter increases
                         Statistics.RoomsCleared++;
@@ -211,23 +211,23 @@ namespace DungeonExplorer
                     }
                     
                     // Unsuccessful case for the room movement
-                    else if (menuAction == 2 && currentRoom.MonsterCounter != 2)
+                    else if (menuAction == 2 && GameMap.currentRoom.MonsterCounter != 2)
                     {
                         IHelper.DisplayMessage("\nYou can't move to the next room!" +
-                                               $"\nYou still have to beat {3 - currentRoom.MonsterCounter} monsters.");
+                                               $"\nYou still have to beat {3 - GameMap.currentRoom.MonsterCounter} monsters.");
                     }
                     
                     // Fight option
-                    else if (menuAction == 3 && currentRoom.MonsterCounter <= 2)
+                    else if (menuAction == 3 && GameMap.currentRoom.MonsterCounter <= 2)
                     {
                         IHelper.DisplayMessage($"\n{player.CreatureName} decides to fight.");
-                        Fight.FightEncounter(player, currentRoom);
+                        Fight.FightEncounter(player, GameMap.currentRoom);
                         
                         // The counter increases
                         Statistics.EnemiesKilled++;
                         
                         // The counter increases
-                        currentRoom.MonsterCounter++;
+                        GameMap.currentRoom.MonsterCounter++;
                         
                         // Increase the statistics parameter
                         player.PlayerStatsUpgrade(player);
@@ -236,10 +236,10 @@ namespace DungeonExplorer
                     }
                     
                     // Option, where the player looks for the items
-                    else if (menuAction == 4 && currentRoom.ItemCounter == 0)
+                    else if (menuAction == 4 && GameMap.currentRoom.ItemCounter == 0)
                     {
                         // Item is generated
-                        roomItem = currentRoom.GenerateRoomItems();
+                        roomItem = GameMap.currentRoom.GenerateRoomItems();
 
                         // Item is found
                         if (roomItem != null)
@@ -253,7 +253,7 @@ namespace DungeonExplorer
                             Statistics.ItemsCollected++;
                         
                             // The counter increases
-                            currentRoom.ItemCounter++;
+                            GameMap.currentRoom.ItemCounter++;
                         }
                         
                         // If the item wasn't found
@@ -263,7 +263,7 @@ namespace DungeonExplorer
                     }
                     
                     // Option, where the item search is unsuccessful
-                    else if (menuAction == 4 && currentRoom.ItemCounter != 0)
+                    else if (menuAction == 4 && GameMap.currentRoom.ItemCounter != 0)
                     {
                         IHelper.DisplayMessage("\nItems are already found in this room!");
                     }
