@@ -127,10 +127,6 @@ namespace DungeonExplorer
         /// The player interacting within the current room.
         /// </param>
         /// 
-        /// <param name="currentRoom">
-        /// The current room being explored by the player.
-        /// </param>
-        /// 
         /// <param name="inventory">
         /// The player's inventory available for management.
         /// </param>

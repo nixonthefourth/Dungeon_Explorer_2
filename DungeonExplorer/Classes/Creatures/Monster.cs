@@ -7,10 +7,20 @@ namespace DungeonExplorer
         /// </summary>
         ///
         /// <param name="monsterName">
+        /// Name of the monster.
         /// </param>
-        /// <param name="monsterDamage"></param>
-        /// <param name="monsterLuck"></param>
-        /// <param name="monsterHealth"></param>
+        /// 
+        /// <param name="monsterDamage">
+        /// Damage of the monster.
+        /// </param>
+        /// 
+        /// <param name="monsterLuck">
+        /// Luck of the monster.
+        /// </param>
+        /// 
+        /// <param name="monsterHealth">
+        /// Health of the monster.
+        /// </param>
         public Monster(string monsterName, int monsterDamage, int monsterLuck, int monsterHealth) 
             : base(monsterName, monsterDamage, monsterLuck, monsterHealth) { }
 
