@@ -12,10 +12,6 @@ namespace DungeonExplorer
         /// The player interacting with the inventory menu.
         /// </param>
         /// 
-        /// <param name="item">
-        /// The item to be managed or activated within the inventory menu.
-        /// </param>
-        ///
         /// <param name="inventory">
         /// The inventory that is being managed.
         /// </param>
@@ -25,7 +21,7 @@ namespace DungeonExplorer
         /// sorting weapons, or exiting the menu. Validates user input and ensures proper option handling.
         /// Displays a message in case of invalid input.
         /// </remarks>
-        public static void InventoryMenu(Player player, Item item, Inventory inventory)
+        public static void InventoryMenu(Player player, Inventory inventory)
         {
             IHelper.DisplayMessage("\nInventory menu:" +
                                    "\n1 | Display inventory" +
@@ -199,7 +195,7 @@ namespace DungeonExplorer
                     }
                     
                     // Next room option
-                    else if (menuAction == 2 && GameMap.currentRoom.MonsterCounter == 2)
+                    else if (menuAction == 2)
                     {
                         IHelper.DisplayMessage("\nMoving to the next room...");
                         GameMap.NextRoom();
@@ -210,12 +206,7 @@ namespace DungeonExplorer
                         break;
                     }
                     
-                    // Unsuccessful case for the room movement
-                    else if (menuAction == 2 && GameMap.currentRoom.MonsterCounter != 2)
-                    {
-                        IHelper.DisplayMessage("\nYou can't move to the next room!" +
-                                               $"\nYou still have to beat {3 - GameMap.currentRoom.MonsterCounter} monsters.");
-                    }
+                    
                     
                     // Fight option
                     else if (menuAction == 3 && GameMap.currentRoom.MonsterCounter <= 2)
@@ -275,7 +266,7 @@ namespace DungeonExplorer
                         Story.ConfirmationMessage();
                         
                         // Inventory management system
-                        InventoryMenu(player, roomItem, inventory);
+                        InventoryMenu(player, inventory);
                         
                         break;
                     }

@@ -104,10 +104,10 @@ namespace DungeonExplorer
             // Message
             IHelper.DisplayMessage("\nYou need to recognise patterns in the room." +
                                    "\nOtherwise, you lose your health." +
-                                   "\nEnter the next number in the sequence:");
+                                   "\nEnter the next number in the sequence: ");
             
             // Pattern
-            int[] pattern = new[] { 0, 1, 1, 2, 3, 5 };
+            IHelper.DisplayMessage("0, 1, 1, 2, 3, 5, ");
 
             // Exception handling
             try
