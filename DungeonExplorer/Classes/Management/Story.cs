@@ -107,7 +107,10 @@ namespace DungeonExplorer
         /// </summary>
         public static void WinAdventure()
         {
-            IHelper.DisplayMessage("You have completed the adventure!");
+            Console.Clear();
+            
+            for (int i = 0; i < 3; i++) IHelper.DisplayMessage("\nYou have completed the adventure!");
+            Environment.Exit(0);
         }
     }
 }

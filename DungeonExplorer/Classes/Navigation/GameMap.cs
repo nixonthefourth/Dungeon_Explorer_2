@@ -36,6 +36,11 @@ namespace DungeonExplorer
         /// Seventh room.
         /// </summary>
         public static Room room7;
+        
+        /// <summary>
+        /// Eighth room, where magic finishes.
+        /// </summary>
+        public static Room room8;
 
         /// <summary>
         /// The room that the player is currently in the game.
@@ -59,6 +64,7 @@ namespace DungeonExplorer
             room5 = new Room("Room 5", 0, 0);
             room6 = new Room("Room 6", 0, 0);
             room7 = new Room("Room 7", 0, 0);
+            room8 = new Room("Room 8", 0, 0);
             
             // Setting the first room as the current room
             currentRoom = room1;
@@ -71,10 +77,6 @@ namespace DungeonExplorer
         /// If the player reaches the end of the game, the game is won.
         /// Measured in the room count. Room 7 is the end of the game.
         /// </summary>
-        /// 
-        /// <param name="currentRoom">
-        /// Passes the room that is currently being executed.
-        /// </param>
         ///
         /// <param name="player">
         /// Passes the player object.
@@ -89,7 +91,7 @@ namespace DungeonExplorer
             Menu.RoomMenu(player, inventory);
             
             // Winning condition
-            if (currentRoom == room7) Story.WinAdventure();
+            if (currentRoom == room8) Story.WinAdventure();
         }
 
         /// <summary>
@@ -108,6 +110,8 @@ namespace DungeonExplorer
             else if (currentRoom == room4) currentRoom = room5;
             else if (currentRoom == room5) currentRoom = room6;
             else if (currentRoom == room6) currentRoom = room7;
+            else if (currentRoom == room7) currentRoom = room8;
+
         }
 
         /// <summary>
