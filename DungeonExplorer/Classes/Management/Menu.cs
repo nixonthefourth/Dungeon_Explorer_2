@@ -195,7 +195,7 @@ namespace DungeonExplorer
                     }
                     
                     // Next room option
-                    else if (menuAction == 2)
+                    else if (menuAction == 2 && GameMap.currentRoom.MonsterCounter == 2)
                     {
                         IHelper.DisplayMessage("\nMoving to the next room...");
                         GameMap.NextRoom();
@@ -206,7 +206,12 @@ namespace DungeonExplorer
                         break;
                     }
                     
-                    
+                    else if (menuAction == 2 && GameMap.currentRoom.MonsterCounter <= 2)
+                    {
+                        IHelper.DisplayMessage($"\nYou still have to kill {3 - GameMap.currentRoom.MonsterCounter} monsters.");
+                        
+                        break;
+                    }
                     
                     // Fight option
                     else if (menuAction == 3 && GameMap.currentRoom.MonsterCounter <= 2)
